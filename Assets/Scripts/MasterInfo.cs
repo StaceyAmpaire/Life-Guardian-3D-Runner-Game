@@ -12,7 +12,7 @@ public class MasterInfo : MonoBehaviour
     public static int unhealthyStreak = 0;
     public static float bodyWeight = 1f;
 
-    public static int treeLife = 50; // start healthy-ish
+    public static int treeLife = 100; // start healthy-ish
 
     // This is the variable your MainMenuManager checks
     public static bool tutorialShownThisSession = false;
