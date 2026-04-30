@@ -16,7 +16,7 @@ public class CollectFood : MonoBehaviour
                 foodFX.Play();
             }
 
-            if (type == FoodType.Healthy)
+           if (type == FoodType.Healthy)
 {
     MasterInfo.dewCount += 5;
     MasterInfo.healthyCount++;
@@ -24,7 +24,11 @@ public class CollectFood : MonoBehaviour
     MasterInfo.healthyStreak++;
     MasterInfo.unhealthyStreak = 0;
 
-    FindFirstObjectByType<PlayerGrowth>().HandleHealthyStreak(MasterInfo.healthyStreak);
+    // 🌳 TREE IMPACT
+    MasterInfo.treeLife = Mathf.Clamp(MasterInfo.treeLife + 5, 0, 100);
+
+    FindFirstObjectByType<PlayerGrowth>()
+        .HandleHealthyStreak(MasterInfo.healthyStreak);
 }
 else
 {
@@ -34,7 +38,11 @@ else
     MasterInfo.unhealthyStreak++;
     MasterInfo.healthyStreak = 0;
 
-    FindFirstObjectByType<PlayerGrowth>().HandleUnhealthyStreak(MasterInfo.unhealthyStreak);
+    // 🌳 TREE IMPACT
+    MasterInfo.treeLife = Mathf.Clamp(MasterInfo.treeLife - 6, 0, 100);
+
+    FindFirstObjectByType<PlayerGrowth>()
+        .HandleUnhealthyStreak(MasterInfo.unhealthyStreak);
 }
             
 
