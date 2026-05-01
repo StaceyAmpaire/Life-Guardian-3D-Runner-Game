@@ -5,7 +5,9 @@ public class CollectFood : MonoBehaviour
     public enum FoodType { Healthy, Unhealthy }
 
     [SerializeField] private FoodType type = FoodType.Healthy;
-    [SerializeField] private AudioSource foodFX;
+   [SerializeField] private AudioClip foodSound;
+private AudioSource foodFX;
+
 
     void OnTriggerEnter(Collider other)
     {

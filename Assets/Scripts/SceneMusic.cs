@@ -19,22 +19,26 @@ public class SceneMusicManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         audioSource = GetComponent<AudioSource>();
+
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Stop menu music before Run scene
-        if (scene.name == "Run")
-        {
-            audioSource.Stop();
-            Destroy(gameObject);
-        }
-
-        // Stop music in Loading scene (optional but clean)
         if (scene.name == "LoadingScene")
         {
             audioSource.Stop();
+        }
+
+        if (scene.name == "Run")
+        {
+            audioSource.Stop();
+        }
+
+        if (scene.name == "LevelSelectScene")
+        {
+            if (!audioSource.isPlaying)
+                audioSource.Play();
         }
     }
 }
