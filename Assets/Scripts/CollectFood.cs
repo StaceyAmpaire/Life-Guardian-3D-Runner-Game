@@ -8,6 +8,8 @@ public class CollectFood : MonoBehaviour
     [SerializeField] private FoodType type = FoodType.Healthy;
     [SerializeField] private AudioClip foodSound; // Assign the AudioClip here for PlayClipAtPoint
     [SerializeField] private string foodName; // Assign the name in the Inspector
+    [SerializeField] private float bloodSugarImpact = 10f;
+   
 
     // nameText will now be assigned automatically
     private TextMeshPro nameText;
@@ -38,6 +40,7 @@ public class CollectFood : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+         float impact = 0f;
         // Check if the object hitting the food is the Player
         if (other.GetComponent<PlayerMovement>() != null || other.CompareTag("Player"))
         {
@@ -77,6 +80,7 @@ public class CollectFood : MonoBehaviour
                 {
                     playerGrowth.HandleHealthyStreak(MasterInfo.healthyStreak);
                 }
+                impact = -bloodSugarImpact; //  LOWER sugar
             }
             else
             {
@@ -94,13 +98,14 @@ public class CollectFood : MonoBehaviour
                 {
                     playerGrowth.HandleUnhealthyStreak(MasterInfo.unhealthyStreak);
                 }
+                impact = bloodSugarImpact; // RAISE sugar
             }
 
-            // Update UI
             if (MasterInfo.Instance != null)
-            {
-                MasterInfo.Instance.UpdateDewDisplay();
-            }
+{
+    MasterInfo.Instance.AdjustBloodSugar(impact); // apply change first
+    MasterInfo.Instance.UpdateDewDisplay();       // then update UI
+}
 
             // Deactivate the food item
             gameObject.SetActive(false);
