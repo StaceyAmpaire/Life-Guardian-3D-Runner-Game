@@ -4,7 +4,8 @@ using UnityEngine.InputSystem; // Required for the new Input System
 
 public class ClickScript : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad = "LevelSelectScene"; // Scene name to load
+    [SerializeField] private string sceneToLoad = "EnvironmentChoice";
+ // Scene name to load
 
     // Update is called once per frame
     void Update()

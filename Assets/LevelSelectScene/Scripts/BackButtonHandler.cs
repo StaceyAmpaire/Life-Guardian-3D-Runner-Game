@@ -10,12 +10,14 @@ public class BackButtonHandler : MonoBehaviour
     private void Start()
     {
         button = GetComponent<Button>();
-        button.onClick.AddListener(GoBackToMainHub);
+        button.onClick.AddListener(GoBackToEnvironmentChoice);
+
     }
 
-    private void GoBackToMainHub()
-    {
-        Debug.Log("Going back to Main Hub...");
-        SceneManager.LoadScene("MainMenu"); // Change to your main scene name
-    }
+    private void GoBackToEnvironmentChoice()
+{
+    Debug.Log("Going back to Environment Choice...");
+    SceneManager.LoadScene("EnvironmentChoice");
+}
+
 }

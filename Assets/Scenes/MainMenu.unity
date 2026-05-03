@@ -1187,7 +1187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963f18f3fd5004f4d94dcbdbd96e0d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickScript
-  sceneToLoad: LevelSelectScene
+  sceneToLoad: EnvironmentChoice
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -2375,7 +2375,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 963f18f3fd5004f4d94dcbdbd96e0d14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickScript
-  sceneToLoad: LevelSelectScene
+  sceneToLoad: EnvironmentChoice
 --- !u!1 &1569838140
 GameObject:
   m_ObjectHideFlags: 0
