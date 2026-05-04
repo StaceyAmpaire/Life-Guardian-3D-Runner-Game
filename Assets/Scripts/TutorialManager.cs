@@ -19,9 +19,14 @@ public class TutorialManager : MonoBehaviour
     {
         // Initialize tutorial content
         tutorialPages.Add("Welcome to Life Guardian!! You Have been Chosen.\n\nIn this journey, you will explore the world of diabetes through choices.");
-        tutorialPages.Add("Your decisions will directly impact your Dew Points: make healthy choices to gain them, but beware, unhealthy decisions will cause you to lose them.");
-        tutorialPages.Add("Dew Points nourish and maintain the ancient Baobab Tree, the very heart of our world. Now, brave Guardian, choose your path forward: will you focus on Prevention or Management?");
-        tutorialPages.Add(" Click 'I Understand' to begin your journey!");
+
+tutorialPages.Add("Your decisions will directly impact your Dew Points.\n\nMake healthy choices to gain them, but beware—unhealthy decisions will cause you to lose them.");
+
+tutorialPages.Add("Dew Points nourish and maintain the ancient Baobab Tree, the very heart of our world.\n\nNow, brave Guardian, choose your path forward: will you focus on Prevention or Management?");
+
+tutorialPages.Add("Disclaimer: This journey teaches healthy choices, but it is not medical advice.\n\nAlways seek guidance from a healthcare professional.");
+
+tutorialPages.Add("Click 'I Understand' to begin your journey!");
 
         // Assign button listeners
         nextButton.onClick.AddListener(ShowNextPage);
@@ -64,15 +69,16 @@ public void ShowPreviousPage()
 
 
 
-    void UpdatePageContent()
-    {
-        tutorialText.text = tutorialPages[currentPageIndex];
+   void UpdatePageContent()
+{
+    tutorialText.text = tutorialPages[currentPageIndex];
 
-        // Manage button visibility
-        backButton.gameObject.SetActive(true);
-        nextButton.gameObject.SetActive(currentPageIndex < tutorialPages.Count - 1);
-        understandButton.gameObject.SetActive(currentPageIndex == tutorialPages.Count - 1);
-    }
+    bool isLastPage = currentPageIndex == tutorialPages.Count - 1;
+
+    backButton.gameObject.SetActive(currentPageIndex > 0);
+    nextButton.gameObject.SetActive(!isLastPage);
+    understandButton.gameObject.SetActive(isLastPage);
+}
 
    public void CloseTutorial()
 {
