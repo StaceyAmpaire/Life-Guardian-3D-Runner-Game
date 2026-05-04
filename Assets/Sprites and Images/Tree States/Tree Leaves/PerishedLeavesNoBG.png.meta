@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3b80a6bd66781db47b6625cb26d0b5f4
+guid: 305d1f5ed8b935b4594d247a2620f117
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Gone Leaves Fin No BG_0
+      name: PerishedLeavesNoBG_0
       rect:
         serializedVersion: 2
-        x: 46
-        y: 87
-        width: 407
-        height: 395
+        x: 37
+        y: 83
+        width: 410
+        height: 397
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0cecea0ae97ecec458579ac22e9711ac
-      internalID: 1741154821
+      spriteID: 263538e9f6482d64086f390d081aafe8
+      internalID: 2134315613
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 659006d5b2745c440b82906658079743
+    spriteID: 956c28cd341eefb45815af2466c2cd1d
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Gone Leaves Fin No BG_0: 1741154821
+      PerishedLeavesNoBG_0: 2134315613
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

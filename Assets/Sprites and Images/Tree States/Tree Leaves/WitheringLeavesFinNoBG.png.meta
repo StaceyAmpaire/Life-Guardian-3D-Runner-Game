@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 824d9916fc208744e979cbef35b49a64
+guid: 9efab1e78e827ce43b27a47f5d759296
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Perished Leaves No BG_0
+      name: WitheringLeavesFinNoBG_0
       rect:
         serializedVersion: 2
-        x: 37
-        y: 82
-        width: 400
-        height: 386
+        x: 18
+        y: 24
+        width: 478
+        height: 479
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cda04db9606c3df42b16462f8377b601
-      internalID: -1845353112
+      spriteID: 3a21f88a0697aef40b01b15f4db6e86a
+      internalID: 1768677019
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: d3b032bcd2e0eda46a3546f5caddce3b
+    spriteID: 0e3e064cd5663124c87162093e881184
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Perished Leaves No BG_0: -1845353112
+      WitheringLeavesFinNoBG_0: 1768677019
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

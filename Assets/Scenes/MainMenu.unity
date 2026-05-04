@@ -2182,6 +2182,46 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: goneLeaves
+      value: 
+      objectReference: {fileID: 1721578848, guid: 28069fcade7c237428d8a85378e5953e, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: stableLeaves
+      value: 
+      objectReference: {fileID: 414202205, guid: 7b6ca244f264f9342a344a20f8377c32, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: healthyLeaves
+      value: 
+      objectReference: {fileID: 1488798491, guid: 29bc25f52302eba4ab0de3f7d18929c8, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: perishedLeaves
+      value: 
+      objectReference: {fileID: 2134315613, guid: 305d1f5ed8b935b4594d247a2620f117, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: witheringLeaves
+      value: 
+      objectReference: {fileID: 1768677019, guid: 9efab1e78e827ce43b27a47f5d759296, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: almostGoneLeaves
+      value: 
+      objectReference: {fileID: -1875686237, guid: e27a2c37bbecb304cb4f99a35bf1dbcc, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: recoveringLeaves
+      value: 
+      objectReference: {fileID: -622655173, guid: cc88eead0f144de4491dfaffbed0494c, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: semiRecoveredLeaves
+      value: 
+      objectReference: {fileID: 1401352773, guid: 58b317b3959aeb743913f6e9e17b1866, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: recoveryStartsLeaves
+      value: 
+      objectReference: {fileID: -1727968111, guid: 9d84a97e2ddbdf1419b5242305bef0cf, type: 3}
+    - target: {fileID: 1840989856155972778, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
+      propertyPath: slightlyReducedLeaves
+      value: 
+      objectReference: {fileID: 1191797233, guid: cec4b3834b9a24c46a4e3d6a5d7fb4ef, type: 3}
     - target: {fileID: 2155111087390648727, guid: 4c925e1a31775014fb016b749e7d7528, type: 3}
       propertyPath: m_Size.x
       value: 2.77

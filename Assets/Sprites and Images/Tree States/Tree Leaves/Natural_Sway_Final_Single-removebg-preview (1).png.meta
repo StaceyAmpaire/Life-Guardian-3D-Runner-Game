@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d12dbb993dea5054f9bc383666166552
+guid: 29bc25f52302eba4ab0de3f7d18929c8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Withering Leaves Fin No BG_0
+      name: Natural_Sway_Final_Single-removebg-preview (1)_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 24
-        width: 467
-        height: 467
+        x: 1
+        y: 9
+        width: 511
+        height: 496
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: abc6a2c3e1febc04dbeb2f1b61283c34
-      internalID: 1401874779
+      spriteID: bb1758c69ea2fd240b72c5a0dc97f2fa
+      internalID: 1488798491
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: aa14c980bdd7b7142a8400bfd70a50d6
+    spriteID: aaa3c40a4fef8a2408b6c9706361b5d4
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Withering Leaves Fin No BG_0: 1401874779
+      Natural_Sway_Final_Single-removebg-preview (1)_0: 1488798491
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

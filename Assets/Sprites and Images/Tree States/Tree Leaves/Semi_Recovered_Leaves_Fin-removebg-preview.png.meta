@@ -100,10 +100,10 @@ TextureImporter:
       name: Semi_Recovered_Leaves_Fin-removebg-preview_0
       rect:
         serializedVersion: 2
-        x: 20
+        x: 21
         y: 22
-        width: 462
-        height: 476
+        width: 473
+        height: 488
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2e3f303147865554686c24282e04cf92
-      internalID: 594375314
+      spriteID: 85f64d5f7ec96a74f896cfcd921c0e80
+      internalID: 1401352773
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: a3505ca650c774c4a96c26f98954b863
+    spriteID: 3bb23c06775d751439652badd75da53f
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Semi_Recovered_Leaves_Fin-removebg-preview_0: 594375314
+      Semi_Recovered_Leaves_Fin-removebg-preview_0: 1401352773
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

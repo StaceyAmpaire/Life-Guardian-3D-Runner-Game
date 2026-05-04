@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 41c91c2a4f3466c48a61a15ebba33b39
+guid: 7b6ca244f264f9342a344a20f8377c32
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Recovering Leaves Fin NO BG_0
+      name: StableLeavesFinNoBG_0
       rect:
         serializedVersion: 2
-        x: 33
-        y: 41
-        width: 427
-        height: 436
+        x: 38
+        y: 44
+        width: 432
+        height: 447
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -112,8 +112,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7c7963f652fe8a64691462824ba62239
-      internalID: 424566724
+      spriteID: d0662e8fc347dfd41ab04665d22aaa95
+      internalID: 414202205
       vertices: []
       indices: 
       edges: []
@@ -122,7 +122,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: ace2033cd91361b44a47a9e324cdeb75
+    spriteID: 1692ddab18413ad46b440020046dc806
     internalID: 0
     vertices: []
     indices: 
@@ -134,7 +134,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Recovering Leaves Fin NO BG_0: 424566724
+      StableLeavesFinNoBG_0: 414202205
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
