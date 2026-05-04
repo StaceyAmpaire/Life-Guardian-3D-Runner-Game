@@ -316,6 +316,7 @@ MonoBehaviour:
   type: 0
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Soda
+  bloodSugarImpact: 15
 --- !u!82 &-8219390187177095043
 AudioSource:
   m_ObjectHideFlags: 0

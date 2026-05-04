@@ -110,6 +110,7 @@ MonoBehaviour:
   type: 1
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Cookie
+  bloodSugarImpact: 15
 --- !u!82 &-7966077497117081110
 AudioSource:
   m_ObjectHideFlags: 0

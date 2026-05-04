@@ -228,6 +228,7 @@ MonoBehaviour:
   type: 1
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Candy
+  bloodSugarImpact: 15
 --- !u!114 &8649586595435215486
 MonoBehaviour:
   m_ObjectHideFlags: 0
