@@ -21,8 +21,11 @@ public class PlayerGrowth : MonoBehaviour
 
     public void HandleHealthyStreak(int streak)
     {
+        // gentle decrease
         MasterInfo.bodyWeight -= 0.2f;
-        MasterInfo.bodyWeight = Mathf.Clamp(MasterInfo.bodyWeight, 1f, 2f);
+
+        // ✅ MIN = 1 (original size)
+        MasterInfo.bodyWeight = Mathf.Clamp(MasterInfo.bodyWeight, 1f, 2.5f);
 
         ApplyBodySize();
 
@@ -35,8 +38,11 @@ public class PlayerGrowth : MonoBehaviour
 
     public void HandleUnhealthyStreak(int streak)
     {
-        MasterInfo.bodyWeight += 0.2f;
-        MasterInfo.bodyWeight = Mathf.Clamp(MasterInfo.bodyWeight, 1f, 2f);
+        // strong increase
+        MasterInfo.bodyWeight += 0.4f;
+
+        // ✅ MIN = 1 (original size)
+        MasterInfo.bodyWeight = Mathf.Clamp(MasterInfo.bodyWeight, 1f, 2.5f);
 
         ApplyBodySize();
 
@@ -49,10 +55,12 @@ public class PlayerGrowth : MonoBehaviour
 
     void ApplyBodySize()
     {
+        float weight = MasterInfo.bodyWeight;
+
         bodyModel.localScale = new Vector3(
-            baseScale.x * MasterInfo.bodyWeight,
-            baseScale.y,
-            baseScale.z * MasterInfo.bodyWeight
+            baseScale.x * weight,
+            baseScale.y * Mathf.Lerp(1f, 1.2f, (weight - 1f) / (2.5f - 1f)),
+            baseScale.z * weight
         );
     }
 }
