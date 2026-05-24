@@ -6,8 +6,8 @@ public class PlayerGrowth : MonoBehaviour
     public Transform bodyModel;
 
     public float speedStep = 1f;
-    public float maxSpeed = 6f;
-    public float minSpeed = 2f;
+    public float maxSpeed = 15f; // Increased to match new movement speeds
+    public float minSpeed = 5f;  // Adjusted for new movement feel
 
     Vector3 baseScale = new Vector3(1f, 1f, 1f);
 
@@ -31,8 +31,9 @@ public class PlayerGrowth : MonoBehaviour
 
         if (movement != null)
         {
-            movement.playerSpeed += speedStep;
-            movement.playerSpeed = Mathf.Min(maxSpeed, movement.playerSpeed);
+            // Fixed: Changed playerSpeed to forwardSpeed
+            movement.forwardSpeed += speedStep;
+            movement.forwardSpeed = Mathf.Min(maxSpeed, movement.forwardSpeed);
         }
     }
 
@@ -48,8 +49,9 @@ public class PlayerGrowth : MonoBehaviour
 
         if (movement != null)
         {
-            movement.playerSpeed -= speedStep;
-            movement.playerSpeed = Mathf.Max(minSpeed, movement.playerSpeed);
+            // Fixed: Changed playerSpeed to forwardSpeed
+            movement.forwardSpeed -= speedStep;
+            movement.forwardSpeed = Mathf.Max(minSpeed, movement.forwardSpeed);
         }
     }
 
