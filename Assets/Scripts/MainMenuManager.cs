@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class MainMenuManager : MonoBehaviour
 {
     public TutorialManager tutorialManager; // Reference to the new TutorialManager script
+    public UserProfileManager userProfileManager; // New: Reference to UserProfileManager
 
     void Start()
     {
@@ -18,6 +19,12 @@ public class MainMenuManager : MonoBehaviour
             // Ensure the tutorial panel is hidden if it has already been shown this session
             tutorialManager.tutorialPanel.SetActive(false);
         }
+
+        // New: Show name input if player name is not set
+        if (string.IsNullOrEmpty(UserProfileManager.Instance.PlayerName))
+        {
+            userProfileManager.ShowNameInputPanel();
+        }
     }
 
     // This method will be called by a UI button to manually open the tutorial
@@ -26,7 +33,9 @@ public class MainMenuManager : MonoBehaviour
         tutorialManager.ShowTutorial();
     }
 
-    // This method will be called by the 'I Understand' button in the TutorialManager
-    // No longer needed here as TutorialManager handles closing itself.
-    // public void CloseTutorial() => tutorialManager.tutorialPanel.SetActive(false);
+    // New: Call this from your Settings button
+    public void OnSettingsButtonClicked()
+    {
+        userProfileManager.ShowNameInputPanel();
+    }
 }
