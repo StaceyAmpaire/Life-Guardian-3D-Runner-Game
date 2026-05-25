@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class AvatarMenuScale : MonoBehaviour
 {
-    Vector3 baseScale = new Vector3(0.3f, 0.2f, 1f);
+    Vector3 baseScale = new Vector3(0.4f, 0.4f, 1f);
 
     void Start()
     {
