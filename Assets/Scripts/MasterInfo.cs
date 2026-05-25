@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-using UnityEngine.SceneManagement; // Added for cleaner scene code
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MasterInfo : MonoBehaviour
@@ -17,6 +17,9 @@ public class MasterInfo : MonoBehaviour
 
     // This is the variable your MainMenuManager checks
     public static bool tutorialShownThisSession = false;
+
+    // Player Profile
+    public static string PlayerName { get; private set; } = ""; // New: Stores player's name
 
     private TMP_Text dewDisplayText;
 
@@ -41,6 +44,12 @@ public class MasterInfo : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
+        // Initialize PlayerName from UserProfileManager if it exists
+        if (UserProfileManager.Instance != null)
+        {
+            PlayerName = UserProfileManager.Instance.PlayerName;
+        }
     }
 
     private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
@@ -50,12 +59,16 @@ public class MasterInfo : MonoBehaviour
     {
         FindTextObjectInScene();
         FindBloodSugarUIObjectsInScene();
+        
+        // New: Update player name display if it exists in the scene
+        if (UserProfileManager.Instance != null)
+        {
+            UserProfileManager.Instance.UpdatePlayerNameDisplay();
+        }
     }
 
     public void FindTextObjectInScene()
     {
-        // Note: Find only works on ACTIVE objects. 
-        // If your text is hidden, this will return null.
         GameObject obj = GameObject.Find("HealingDewText");
         if (obj != null)
         {
@@ -64,18 +77,15 @@ public class MasterInfo : MonoBehaviour
         }
     }
 
-    // Finds the Blood Sugar TextMeshPro object and Slider in the current scene.
     public void FindBloodSugarUIObjectsInScene()
     {
-        // Find the numerical text display (e.g., "112 mg/dL")
-        GameObject valueObj = GameObject.Find("BloodSugarValueText"); // Assumes your numerical Text object is named "BloodSugarValueText"
+        GameObject valueObj = GameObject.Find("BloodSugarValueText");
         if (valueObj != null)
         {
             bloodSugarValueText = valueObj.GetComponent<TMP_Text>();
         }
 
-        // Find the Slider component
-        GameObject sliderObj = GameObject.Find("BloodSugarSlider"); // Assumes your Slider GameObject is named "BloodSugarSlider"
+        GameObject sliderObj = GameObject.Find("BloodSugarSlider");
         if (sliderObj != null)
         {
             bloodSugarSlider = sliderObj.GetComponent<Slider>();
@@ -85,52 +95,44 @@ public class MasterInfo : MonoBehaviour
                 bloodSugarSlider.maxValue = maxBloodSugar;
             }
         }
-        UpdateBloodSugarDisplay(); // Update immediately after finding
+        UpdateBloodSugarDisplay();
     }
-    // Updates the Blood Sugar UI display (Slider and Text).
+
     public void UpdateBloodSugarDisplay()
     {
-        // Update numerical text display
         if (bloodSugarValueText != null)
         {
-            bloodSugarValueText.text = $"{bloodSugar:F0}"; // Display blood sugar value, no decimal for cleaner look
+            bloodSugarValueText.text = $"{bloodSugar:F0}";
 
-            // Change text color based on blood sugar levels for visual feedback.
             if (bloodSugar < lowBloodSugarThreshold)
             {
-                bloodSugarValueText.color = Color.blue; // Low blood sugar
+                bloodSugarValueText.color = Color.blue;
             }
             else if (bloodSugar > normalBloodSugarColorThreshold)
             {
-                bloodSugarValueText.color = Color.red; // High blood sugar
+                bloodSugarValueText.color = Color.red;
             }
             else
             {
-                bloodSugarValueText.color = Color.green; // Healthy range
+                bloodSugarValueText.color = Color.green;
             }
         }
 
-        // Update slider value
         if (bloodSugarSlider != null)
         {
             bloodSugarSlider.value = bloodSugar;
         }
     }
 
-    // Adjusts blood sugar level based on impact (from food) and player's body weight.
     public void AdjustBloodSugar(float impact)
     {
-        // The impact of food on blood sugar is inversely proportional to body weight.
-        // A higher bodyWeight means the same food impact will have a smaller effect on blood sugar change.
-        float adjustedImpact = impact / (1f + (bodyWeight - 1f) * 0.1f); 
+        float adjustedImpact = impact / (1f + (bodyWeight - 1f) * 0.1f);
 
         bloodSugar += adjustedImpact;
-        // Clamp blood sugar to a realistic and safe range (e.g., 0 to 300 mg/dL).
-        bloodSugar = Mathf.Clamp(bloodSugar, 0f, 300f); 
+        bloodSugar = Mathf.Clamp(bloodSugar, 0f, 300f);
 
-        UpdateBloodSugarDisplay(); // Refresh the UI after adjustment.
+        UpdateBloodSugarDisplay();
     }
-
 
     public void UpdateDewDisplay()
     {
@@ -138,5 +140,11 @@ public class MasterInfo : MonoBehaviour
         {
             dewDisplayText.text = $"Healing Dew: {dewCount}";
         }
+    }
+
+    // New: Method to update player name in MasterInfo
+    public static void SetPlayerName(string name)
+    {
+        PlayerName = name;
     }
 }
