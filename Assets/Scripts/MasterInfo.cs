@@ -5,62 +5,68 @@ using UnityEngine.UI;
 
 public class MasterInfo : MonoBehaviour
 {
-    // These will persist as long as the game is running
     public static int dewCount = 0;
+
     public static int healthyCount = 0;
     public static int unhealthyCount = 0;
+
     public static int healthyStreak = 0;
     public static int unhealthyStreak = 0;
+
     public static float bodyWeight = 1f;
 
-    public static int treeLife = 100; // start healthy-ish
+    // LIFE VALUE - DO NOT REMOVE (Used for tree mechanics)
+    public static int treeLife = 100;
 
-    // This is the variable your MainMenuManager checks
     public static bool tutorialShownThisSession = false;
 
-    // Player Profile
-    public static string PlayerName { get; private set; } = ""; // New: Stores player's name
+    public static string PlayerName { get; private set; } = "";
 
     private TMP_Text dewDisplayText;
 
-    // Blood Sugar variables
-    public static float bloodSugar = 100f; // Initial blood sugar level (e.g., mg/dL)
-    public static float minBloodSugar = 70f; // Minimum value for the slider
-    public static float maxBloodSugar = 180f; // Maximum value for the slider (e.g., post-meal high)
-    public static float normalBloodSugarColorThreshold = 120f; // Upper limit for 'normal' green color
-    public static float lowBloodSugarThreshold = 80f; // Lower limit for 'normal' green color
+    // These references are now handled by PlayerLifeManager for faster updates
+    // private TMP_Text lifeValueText;
+    // private Slider lifeSlider;
 
-    private TMP_Text bloodSugarValueText; // Reference for the numerical Blood Sugar UI Text (e.g., 112 mg/dL)
-    private Slider bloodSugarSlider; // Reference for the Blood Sugar UI Slider
     public static MasterInfo Instance { get; private set; }
 
     private void Awake()
     {
-        // Singleton Pattern
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
             return;
         }
+
         Instance = this;
         DontDestroyOnLoad(gameObject);
 
-        // Initialize PlayerName from UserProfileManager if it exists
         if (UserProfileManager.Instance != null)
         {
             PlayerName = UserProfileManager.Instance.PlayerName;
         }
     }
 
-    private void OnEnable() => SceneManager.sceneLoaded += OnSceneLoaded;
-    private void OnDisable() => SceneManager.sceneLoaded -= OnSceneLoaded;
+    private void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         FindTextObjectInScene();
-        FindBloodSugarUIObjectsInScene();
         
-        // New: Update player name display if it exists in the scene
+        // Fast UI sync on scene load
+        if (PlayerLifeManager.Instance != null)
+        {
+            PlayerLifeManager.Instance.UpdateLifeUI(treeLife);
+        }
+
         if (UserProfileManager.Instance != null)
         {
             UserProfileManager.Instance.UpdatePlayerNameDisplay();
@@ -70,6 +76,7 @@ public class MasterInfo : MonoBehaviour
     public void FindTextObjectInScene()
     {
         GameObject obj = GameObject.Find("HealingDewText");
+
         if (obj != null)
         {
             dewDisplayText = obj.GetComponent<TMP_Text>();
@@ -77,61 +84,13 @@ public class MasterInfo : MonoBehaviour
         }
     }
 
-    public void FindBloodSugarUIObjectsInScene()
+    // This method is now simplified as PlayerLifeManager handles the UI
+    public void UpdateLifeDisplay()
     {
-        GameObject valueObj = GameObject.Find("BloodSugarValueText");
-        if (valueObj != null)
+        if (PlayerLifeManager.Instance != null)
         {
-            bloodSugarValueText = valueObj.GetComponent<TMP_Text>();
+            PlayerLifeManager.Instance.UpdateLifeUI(treeLife);
         }
-
-        GameObject sliderObj = GameObject.Find("BloodSugarSlider");
-        if (sliderObj != null)
-        {
-            bloodSugarSlider = sliderObj.GetComponent<Slider>();
-            if (bloodSugarSlider != null)
-            {
-                bloodSugarSlider.minValue = minBloodSugar;
-                bloodSugarSlider.maxValue = maxBloodSugar;
-            }
-        }
-        UpdateBloodSugarDisplay();
-    }
-
-    public void UpdateBloodSugarDisplay()
-    {
-        if (bloodSugarValueText != null)
-        {
-            bloodSugarValueText.text = $"{bloodSugar:F0}";
-
-            if (bloodSugar < lowBloodSugarThreshold)
-            {
-                bloodSugarValueText.color = Color.blue;
-            }
-            else if (bloodSugar > normalBloodSugarColorThreshold)
-            {
-                bloodSugarValueText.color = Color.red;
-            }
-            else
-            {
-                bloodSugarValueText.color = Color.green;
-            }
-        }
-
-        if (bloodSugarSlider != null)
-        {
-            bloodSugarSlider.value = bloodSugar;
-        }
-    }
-
-    public void AdjustBloodSugar(float impact)
-    {
-        float adjustedImpact = impact / (1f + (bodyWeight - 1f) * 0.1f);
-
-        bloodSugar += adjustedImpact;
-        bloodSugar = Mathf.Clamp(bloodSugar, 0f, 300f);
-
-        UpdateBloodSugarDisplay();
     }
 
     public void UpdateDewDisplay()
@@ -142,7 +101,6 @@ public class MasterInfo : MonoBehaviour
         }
     }
 
-    // New: Method to update player name in MasterInfo
     public static void SetPlayerName(string name)
     {
         PlayerName = name;

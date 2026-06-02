@@ -1,44 +1,98 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.InputSystem; // Required for the New Input System
+using UnityEngine.InputSystem;
 
 public class ClickScript : MonoBehaviour
 {
-    [SerializeField] private string sceneToLoad = "EnvironmentChoice"; // Scene name to load
+    public enum PortalType
+    {
+        Prevention,
+        Management
+    }
+
+    [Header("Portal Settings")]
+    public PortalType type;
+
+    [Header("Scene Names")]
+    public string startScene = "EnvironmentChoice";
+    public string managementScene = "Management";
 
     void Update()
     {
-        Vector2 inputScreenPosition = Vector2.zero;
-        bool inputDetected = false;
+        Vector2 inputPos = Vector2.zero;
+        bool detected = false;
 
-        // 1. Check for PC Mouse Click
-        if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current != null &&
+            Mouse.current.leftButton.wasPressedThisFrame)
         {
-            inputScreenPosition = Mouse.current.position.ReadValue();
-            inputDetected = true;
+            inputPos = Mouse.current.position.ReadValue();
+            detected = true;
         }
-        // 2. Check for Mobile Finger Touch (Explicitly using the New Input System name)
-        else if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
+        else if (Touchscreen.current != null &&
+                 Touchscreen.current.primaryTouch.press.wasPressedThisFrame)
         {
-            inputScreenPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-            inputDetected = true;
+            inputPos =
+                Touchscreen.current.primaryTouch.position.ReadValue();
+
+            detected = true;
         }
 
-        // 3. Process the Raycast if an input happened
-        if (inputDetected)
+        if (!detected)
+            return;
+
+        Ray ray = Camera.main.ScreenPointToRay(inputPos);
+
+        RaycastHit2D hit =
+            Physics2D.Raycast(ray.origin, ray.direction);
+
+        if (hit.collider != null &&
+            hit.collider.gameObject == gameObject)
         {
-            // Create a ray from the camera through the input position
-            Ray mouseRay = Camera.main.ScreenPointToRay(inputScreenPosition);
+            HandlePortalClick();
+        }
+    }
 
-            // Perform the 2D raycast
-            RaycastHit2D hit = Physics2D.Raycast(mouseRay.origin, mouseRay.direction);
+    private void HandlePortalClick()
+    {
+        int life = MasterInfo.treeLife;
 
-            // Check if the ray hit a 2D collider
-            if (hit.collider != null)
+        // MANAGEMENT PORTAL
+        if (type == PortalType.Management)
+        {
+            if (life <= 45)
             {
-                Transform clickedObject = hit.collider.transform;
-                Debug.Log($"Pressed {clickedObject.name}! Loading {sceneToLoad}...");
-                SceneManager.LoadScene(sceneToLoad);
+                AlertManager.Instance.ShowAlert(
+                    "Tree Life is critical. Entering Management."
+                );
+
+                SceneManager.LoadScene(managementScene);
+            }
+            else
+            {
+                AlertManager.Instance.ShowAlert(
+                    $"Management locked. Tree Life must fall to 45 or below. Current Life: {life}"
+                );
+            }
+
+            return;
+        }
+
+        // PREVENTION PORTAL
+        if (type == PortalType.Prevention)
+        {
+            if (life >= 55)
+            {
+                AlertManager.Instance.ShowAlert(
+                    "Prevention portal available."
+                );
+
+                SceneManager.LoadScene(startScene);
+            }
+            else
+            {
+                AlertManager.Instance.ShowAlert(
+                    $"Prevention locked. Restore Tree Life to 55. Current Life: {life}"
+                );
             }
         }
     }
