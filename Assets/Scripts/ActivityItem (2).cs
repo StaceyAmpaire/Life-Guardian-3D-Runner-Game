@@ -102,7 +102,7 @@ public class ActivityItem : MonoBehaviour
 
             if (MasterInfo.Instance != null)
             {
-                MasterInfo.Instance.AdjustBloodSugar(impact); // apply change first
+                
                 MasterInfo.Instance.UpdateDewDisplay();       // then update UI
             }
 
