@@ -6,26 +6,29 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/preventionscenes/SplashScene.unity
+    path: Assets/Scenes/SplashScene.unity
     guid: 2a4fea30e2b5aaf40932bb97273c6fc6
   - enabled: 1
-    path: Assets/Scenes/preventionscenes/MainMenu.unity
+    path: Assets/Scenes/MainMenu.unity
     guid: 4a8f9e7f064b82b4699cfecfdf62c493
   - enabled: 1
-    path: Assets/Scenes/preventionscenes/Run.unity
+    path: Assets/Scenes/Run.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/preventionscenes/LevelSelectScene.unity
+    path: Assets/Scenes/LevelSelectScene.unity
     guid: 8a5e1b2d825ec1b43808cb47550568a8
   - enabled: 1
-    path: Assets/Scenes/preventionscenes/LoadingScene.unity
+    path: Assets/Scenes/LoadingScene.unity
     guid: 628bdf5b87bc76244aee5f156cfde576
   - enabled: 1
-    path: Assets/Scenes/preventionscenes/EnvironmentChoice.unity
+    path: Assets/Scenes/EnvironmentChoice.unity
     guid: d71104ec569da2f418c9d0d8db533deb
   - enabled: 1
-    path: Assets/Scenes/preventionscenes/ActivityRun.unity
+    path: Assets/Scenes/ActivityRun.unity
     guid: 60ce52e76946a294090b7ca8f7919d71
+  - enabled: 1
+    path: Assets/Scenes/Management.unity
+    guid: d447c5569b919bf46ba0a9784dfbae83
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0
