@@ -21,7 +21,7 @@ IEnumerator CollisionEnd()
          collisionFX.Play();
        thePlayer.GetComponent<PlayerMovement>().enabled = false;
        //it will stop moving and give us room to play the animation
-       playerAnim.GetComponent<Animator>().Play("Stumble Backwards (1)");
+       playerAnim.GetComponent<Animator>().Play("Stumblerunner1");
        mainCam.GetComponent<Animator>().Play("CollisionCam");
        yield return new WaitForSeconds(3);
        fadeOut.SetActive(true);

@@ -119,6 +119,49 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &7453007 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8355466578450483961, guid: f2985642f64ac1641922e085e353cd2e, type: 3}
+  m_PrefabInstance: {fileID: 4693347195579936487}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &7453008
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453007}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7453009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7453007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7add0562d84a934382e14a72f5112f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
+  thePlayer: {fileID: 1095726502}
+  playerAnim: {fileID: 1106226197}
+  collisionFX: {fileID: 1542732156}
+  mainCam: {fileID: 963194225}
+  fadeOut: {fileID: 1173443615}
 --- !u!1 &66917267 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8127039663226291039, guid: f2985642f64ac1641922e085e353cd2e, type: 3}
@@ -137,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -274,6 +317,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71085580}
   m_CullTransparentMesh: 1
+--- !u!1 &116294185 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 285913078887095702, guid: acc896056b5f99243b9a4af8bc673754, type: 3}
+  m_PrefabInstance: {fileID: 6455710393826168651}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &116294189
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116294185}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &116294190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 116294185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7add0562d84a934382e14a72f5112f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
+  thePlayer: {fileID: 1095726502}
+  playerAnim: {fileID: 1106226197}
+  collisionFX: {fileID: 1542732156}
+  mainCam: {fileID: 963194225}
+  fadeOut: {fileID: 1173443615}
 --- !u!1 &152678712
 GameObject:
   m_ObjectHideFlags: 0
@@ -980,7 +1066,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1139,7 +1225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1273,7 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1396,7 +1482,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1455,13 +1541,62 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1309910605144772, guid: 27ce25370e5628e4097b7cb95b3a151d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 431746537}
+    - targetCorrespondingSourceObject: {fileID: 1309910605144772, guid: 27ce25370e5628e4097b7cb95b3a151d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 431746536}
   m_SourcePrefab: {fileID: 100100000, guid: 27ce25370e5628e4097b7cb95b3a151d, type: 3}
 --- !u!4 &431746534 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4951361981142268, guid: 27ce25370e5628e4097b7cb95b3a151d, type: 3}
   m_PrefabInstance: {fileID: 431746533}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &431746535 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1309910605144772, guid: 27ce25370e5628e4097b7cb95b3a151d, type: 3}
+  m_PrefabInstance: {fileID: 431746533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &431746536
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431746535}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.22407348, y: 0.5599399, z: 0.42846572}
+  m_Center: {x: 0.0037346408, y: 0.26554534, z: 0.011832446}
+--- !u!114 &431746537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 431746535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7add0562d84a934382e14a72f5112f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
+  thePlayer: {fileID: 1095726502}
+  playerAnim: {fileID: 1106226197}
+  collisionFX: {fileID: 1542732156}
+  mainCam: {fileID: 963194225}
+  fadeOut: {fileID: 1173443615}
 --- !u!1 &467641065
 GameObject:
   m_ObjectHideFlags: 0
@@ -1554,7 +1689,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1612,7 +1747,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1629,7 +1764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1646,7 +1781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1663,7 +1798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1680,7 +1815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -1819,7 +1954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -2312,7 +2447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7add0562d84a934382e14a72f5112f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
-  thePlayer: {fileID: 1095726502}
+  thePlayer: {fileID: 1106226197}
   playerAnim: {fileID: 0}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
@@ -2424,7 +2559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -2575,7 +2710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -2643,7 +2778,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -3790,6 +3925,7 @@ GameObject:
   - component: {fileID: 1201022406}
   - component: {fileID: 1201022405}
   - component: {fileID: 1201022404}
+  - component: {fileID: 1201022407}
   m_Layer: 0
   m_Name: Crate01
   m_TagString: Untagged
@@ -3828,7 +3964,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3890,6 +4026,23 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201022402}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1201022407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201022402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7add0562d84a934382e14a72f5112f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
+  thePlayer: {fileID: 1095726502}
+  playerAnim: {fileID: 1106226197}
+  collisionFX: {fileID: 1542732156}
+  mainCam: {fileID: 963194225}
+  fadeOut: {fileID: 1173443615}
 --- !u!1 &1207196989
 GameObject:
   m_ObjectHideFlags: 0
@@ -3966,7 +4119,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -4340,7 +4493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -4454,7 +4607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -4769,7 +4922,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -5218,7 +5371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -5297,7 +5450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -6291,7 +6444,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6310,7 +6463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -6904,7 +7057,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -6936,7 +7089,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -6953,7 +7106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -6970,7 +7123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7050,7 +7203,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7093,7 +7246,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7210,7 +7363,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7480,7 +7633,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 919132149155446097, guid: d062bdde4e8277e47b48bcfcae5a1a73, type: 3}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7600,7 +7753,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7617,7 +7770,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7634,7 +7787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7787,7 +7940,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -7905,7 +8058,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -8011,7 +8164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 919132149155446097, guid: d062bdde4e8277e47b48bcfcae5a1a73, type: 3}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -8030,7 +8183,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -8535,7 +8688,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -8573,7 +8726,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -8611,7 +8764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -8675,6 +8828,10 @@ PrefabInstance:
       propertyPath: foodFX
       value: 
       objectReference: {fileID: 949528247}
+    - target: {fileID: 2026435905122192465, guid: f2985642f64ac1641922e085e353cd2e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.175
+      objectReference: {fileID: 0}
     - target: {fileID: 2632180091202685614, guid: f2985642f64ac1641922e085e353cd2e, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -8885,6 +9042,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8096379223421154054, guid: f2985642f64ac1641922e085e353cd2e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4693347195579936494}
+    - targetCorrespondingSourceObject: {fileID: 8355466578450483961, guid: f2985642f64ac1641922e085e353cd2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7453009}
+    - targetCorrespondingSourceObject: {fileID: 8355466578450483961, guid: f2985642f64ac1641922e085e353cd2e, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7453008}
     - targetCorrespondingSourceObject: {fileID: 8127039663226291039, guid: f2985642f64ac1641922e085e353cd2e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 66917273}
@@ -8930,7 +9093,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -8964,7 +9127,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -8981,7 +9144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -8997,6 +9160,10 @@ PrefabInstance:
       propertyPath: foodFX
       value: 
       objectReference: {fileID: 949528247}
+    - target: {fileID: 287587695834254872, guid: acc896056b5f99243b9a4af8bc673754, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.688
+      objectReference: {fileID: 0}
     - target: {fileID: 347461903444987324, guid: acc896056b5f99243b9a4af8bc673754, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -9124,6 +9291,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5647661888468940929, guid: acc896056b5f99243b9a4af8bc673754, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6455710393826168661}
+    - targetCorrespondingSourceObject: {fileID: 285913078887095702, guid: acc896056b5f99243b9a4af8bc673754, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 116294190}
+    - targetCorrespondingSourceObject: {fileID: 285913078887095702, guid: acc896056b5f99243b9a4af8bc673754, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 116294189}
     - targetCorrespondingSourceObject: {fileID: 8696446804458469585, guid: acc896056b5f99243b9a4af8bc673754, type: 3}
       insertIndex: -1
       addedObject: {fileID: 655983347}
@@ -9225,7 +9398,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
@@ -9263,7 +9436,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollisionDetect
   thePlayer: {fileID: 1095726502}
-  playerAnim: {fileID: 0}
+  playerAnim: {fileID: 1106226197}
   collisionFX: {fileID: 1542732156}
   mainCam: {fileID: 963194225}
   fadeOut: {fileID: 1173443615}
