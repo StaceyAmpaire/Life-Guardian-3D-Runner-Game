@@ -300,9 +300,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
   type: 1
+  dewValue: -7
+  lifeValue: -7
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Doughnut
-  bloodSugarImpact: 15
+  nutritionMessage: Doughnuts are high in sugar and calories.
 --- !u!114 &-250329244640788374
 MonoBehaviour:
   m_ObjectHideFlags: 0

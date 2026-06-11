@@ -432,6 +432,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
   type: 0
+  dewValue: 8
+  lifeValue: 7
   foodSound: {fileID: 8300000, guid: 7f8ac7fcf79b3814ca8d093106797889, type: 3}
   foodName: Fish
 --- !u!114 &2143699320941091293

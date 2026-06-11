@@ -108,9 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
   type: 1
+  dewValue: -5
+  lifeValue: -5
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Cookie
-  bloodSugarImpact: 15
 --- !u!82 &-7966077497117081110
 AudioSource:
   m_ObjectHideFlags: 0
@@ -295,7 +296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0033057965, y: 0.037314422}
+  m_AnchoredPosition: {x: -0.0033057965, y: 0.032314423}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &178445435451359851

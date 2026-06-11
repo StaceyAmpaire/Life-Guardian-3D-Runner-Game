@@ -226,9 +226,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
   type: 1
+  dewValue: -12
+  lifeValue: -12
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Candy
-  bloodSugarImpact: 15
+  nutritionMessage: Candy is high in sugar but low in nutrients.
 --- !u!114 &8649586595435215486
 MonoBehaviour:
   m_ObjectHideFlags: 0

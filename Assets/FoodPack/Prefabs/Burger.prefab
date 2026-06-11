@@ -320,9 +320,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
   type: 1
+  dewValue: -8
+  lifeValue: -8
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Burger
-  bloodSugarImpact: 15
+  nutritionMessage: Fast food may contribute to weight gain.
 --- !u!82 &6191340580026956526
 AudioSource:
   m_ObjectHideFlags: 0
