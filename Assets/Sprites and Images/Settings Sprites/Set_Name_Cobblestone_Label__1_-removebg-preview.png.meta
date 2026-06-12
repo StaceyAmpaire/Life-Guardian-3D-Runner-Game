@@ -1,0 +1,661 @@
+fileFormatVersion: 2
+guid: 1c05a414dce738643b2c882b6d2daa01
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 102
+        width: 666
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0de2d41cb1875ed4aaba3046cc540b7e
+      internalID: 235495597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_1
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 180
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cebc59082ad2b47409398391ec74117f
+      internalID: -1698489968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_2
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 114
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24bfa3099dde54048ae013b9707e9706
+      internalID: -689417788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_3
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 108
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67948cee5ab5ce043a194b86c063dbe3
+      internalID: 2039490944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_4
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 108
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 423b3faa606bbe240a11689954f0fb51
+      internalID: -1678056249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_5
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 108
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b474b4f6b209fcf4f96f56ae8c3bfd5d
+      internalID: -2067530681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_6
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 108
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f2dbcf4cb0eb914380132493bf76e9e
+      internalID: 383930395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_7
+      rect:
+        serializedVersion: 2
+        x: 233
+        y: 108
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f695c08bff6bddd4ebde59b022acd7a7
+      internalID: 199250248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_8
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 108
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d01847001c199d7458fabf31d404b621
+      internalID: -739094748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_9
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 108
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b7f532a92ead9648a24df06b592bb73
+      internalID: -634649198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_10
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 108
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d1a4d7e72c34ab4f9eae23a874c3ae1
+      internalID: -172531343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_11
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 108
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5af086f1f83224b4dbd708a4339482f8
+      internalID: 837414300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_12
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 108
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f684dc38104cbae42b2bebf575588768
+      internalID: -2079961281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_13
+      rect:
+        serializedVersion: 2
+        x: 415
+        y: 108
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35951a9ffb5c66744aa3fb9e377b8ac4
+      internalID: 2000915759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_14
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 108
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a70a6d87069a8ae4f93f78e51f218400
+      internalID: 1276213824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_15
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 108
+        width: 7
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 590495ec2186fc94bba3552f0e0e4594
+      internalID: 1399497868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_16
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 108
+        width: 4
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e9efad1975fccc44812fd830218d6d0
+      internalID: 1034918176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_17
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 108
+        width: 6
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eab39bb9086bd86408d8d174ef89e439
+      internalID: 1392153272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_18
+      rect:
+        serializedVersion: 2
+        x: 493
+        y: 108
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 685c5fb9a0e68e044b7f667b1541f696
+      internalID: -1086945007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_19
+      rect:
+        serializedVersion: 2
+        x: 552
+        y: 102
+        width: 10
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41370eaeac052054f9951d03946a5123
+      internalID: 763095836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_20
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 102
+        width: 8
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c007c17502c49b4f87dd3f3ebcfe8e4
+      internalID: 1620529093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_21
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 108
+        width: 5
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d70456d008723dd41b02cb4cb4e05988
+      internalID: -1677754001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Set_Name_Cobblestone_Label__1_-removebg-preview_22
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 102
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 711b2b82bdb5a46469ac29662ee65b93
+      internalID: 801981964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: e2b62dab6f6381f448174fee03fa5ccc
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Set_Name_Cobblestone_Label__1_-removebg-preview_0: 235495597
+      Set_Name_Cobblestone_Label__1_-removebg-preview_1: -1698489968
+      Set_Name_Cobblestone_Label__1_-removebg-preview_10: -172531343
+      Set_Name_Cobblestone_Label__1_-removebg-preview_11: 837414300
+      Set_Name_Cobblestone_Label__1_-removebg-preview_12: -2079961281
+      Set_Name_Cobblestone_Label__1_-removebg-preview_13: 2000915759
+      Set_Name_Cobblestone_Label__1_-removebg-preview_14: 1276213824
+      Set_Name_Cobblestone_Label__1_-removebg-preview_15: 1399497868
+      Set_Name_Cobblestone_Label__1_-removebg-preview_16: 1034918176
+      Set_Name_Cobblestone_Label__1_-removebg-preview_17: 1392153272
+      Set_Name_Cobblestone_Label__1_-removebg-preview_18: -1086945007
+      Set_Name_Cobblestone_Label__1_-removebg-preview_19: 763095836
+      Set_Name_Cobblestone_Label__1_-removebg-preview_2: -689417788
+      Set_Name_Cobblestone_Label__1_-removebg-preview_20: 1620529093
+      Set_Name_Cobblestone_Label__1_-removebg-preview_21: -1677754001
+      Set_Name_Cobblestone_Label__1_-removebg-preview_22: 801981964
+      Set_Name_Cobblestone_Label__1_-removebg-preview_3: 2039490944
+      Set_Name_Cobblestone_Label__1_-removebg-preview_4: -1678056249
+      Set_Name_Cobblestone_Label__1_-removebg-preview_5: -2067530681
+      Set_Name_Cobblestone_Label__1_-removebg-preview_6: 383930395
+      Set_Name_Cobblestone_Label__1_-removebg-preview_7: 199250248
+      Set_Name_Cobblestone_Label__1_-removebg-preview_8: -739094748
+      Set_Name_Cobblestone_Label__1_-removebg-preview_9: -634649198
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
