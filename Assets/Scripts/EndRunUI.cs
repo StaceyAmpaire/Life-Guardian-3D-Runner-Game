@@ -33,11 +33,13 @@ public class EndRunUI : MonoBehaviour
         unhealthyText.text = "Unhealthy Choices: " + MasterInfo.unhealthyCount;
     }
 
-    public void PlayAgain()
-    {
-        Time.timeScale = 1f;
-        SceneManager.LoadScene("Run");
-    }
+   public void PlayAgain()
+{
+    Time.timeScale = 1f;
+
+    Scene currentScene = SceneManager.GetActiveScene();
+    SceneManager.LoadScene(currentScene.name);
+}
 
     public void GoMain()
     {

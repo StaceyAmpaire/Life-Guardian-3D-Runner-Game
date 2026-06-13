@@ -10,6 +10,9 @@ public class MasterInfo : MonoBehaviour
     public static int healthyCount = 0;
     public static int unhealthyCount = 0;
 
+    public static int healthyActivityCount = 0;
+public static int unhealthyActivityCount = 0;
+
     public static int healthyStreak = 0;
     public static int unhealthyStreak = 0;
 

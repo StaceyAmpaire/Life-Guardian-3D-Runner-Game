@@ -313,7 +313,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547490e5e34dcfd44bba60c55fd6f662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
-  type: 0
+  type: 1
   dewValue: -9
   lifeValue: -9
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
