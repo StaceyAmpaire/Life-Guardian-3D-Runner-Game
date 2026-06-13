@@ -10,9 +10,11 @@ public class RemyController : MonoBehaviour
     public int badChoicePoints = 250;
 
     [Header("Movement Speeds")]
-    public float runSpeed = 8f;
-    public float walkSpeed = 4f;
-    public float weakSpeed = 1.5f;
+    public float weakWalkSpeed = 1.5f;
+    public float normalWalkSpeed = 4f;
+    public float slowRunSpeed = 5.5f;
+    public float runSpeed = 7f;
+    public float fastRunSpeed = 9f;
 
     [Header("UI References")]
     public TMP_Text scoreText;
@@ -20,11 +22,17 @@ public class RemyController : MonoBehaviour
     public TMP_Text stateText;
     public Slider healthBar;
     public GameObject gameOverPanel;
+    public TopBarPanel topBarPanel;
 
     [Header("Animator")]
     public Animator animator;
 
-    private int _score = 1000; // 20% health
+    [Header("Lane Movement")]
+    public float laneSpeed = 8f;
+    public float minX = 392f;
+    public float maxX = 408f;
+
+    private int _score;
     private bool _isDead = false;
     private float _currentSpeed;
 
@@ -32,12 +40,21 @@ public class RemyController : MonoBehaviour
 
     void Start()
     {
+        // Initialize score to 20% of max (1000 points if maxScore is 5000)
+        _score = Mathf.RoundToInt(maxScore * 0.2f);
+
+        // Get animator if not assigned
         if (animator == null)
             animator = GetComponent<Animator>();
 
+        // Hide game over panel at start
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
 
+        // Ensure time scale is normal
+        Time.timeScale = 1f;
+
+        // Initialize state and UI
         UpdateState();
         UpdateUI();
     }
@@ -46,7 +63,16 @@ public class RemyController : MonoBehaviour
     {
         if (_isDead) return;
 
-        transform.Translate(Vector3.forward * _currentSpeed * Time.deltaTime);
+        // Forward movement based on current speed
+        Vector3 pos = transform.position;
+        pos.z += _currentSpeed * Time.deltaTime;
+
+        // Lane movement (horizontal)
+        float horizontal = Input.GetAxis("Horizontal");
+        pos.x += horizontal * laneSpeed * Time.deltaTime;
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+
+        transform.position = pos;
     }
 
     public void GoodChoice()
@@ -64,7 +90,6 @@ public class RemyController : MonoBehaviour
         if (_isDead) return;
 
         _score = Mathf.Min(_score + amount, maxScore);
-
         UpdateState();
         UpdateUI();
     }
@@ -74,7 +99,6 @@ public class RemyController : MonoBehaviour
         if (_isDead) return;
 
         _score = Mathf.Max(_score - amount, 0);
-
         UpdateState();
         UpdateUI();
     }
@@ -82,49 +106,60 @@ public class RemyController : MonoBehaviour
     private void UpdateState()
     {
         float hp = HealthPct;
-
+        
+        // Clear current animations
         SetAllAnimationsFalse();
 
+        // Check for death (health <= 10%)
         if (hp <= 10f)
         {
-            _isDead = true;
-            _currentSpeed = 0f;
-
-            if (animator != null)
-                animator.SetBool("isDead", true);
-
-            TriggerGameOver();
+            Die();
             return;
         }
 
+        // Determine movement state based on health percentage
         if (hp <= 30f)
         {
-            _currentSpeed = weakSpeed;
-
-            if (animator != null)
-                animator.SetBool("isWeak", true);
-
-            UpdateStateText("Weak");
-            return;
+            _currentSpeed = weakWalkSpeed;
+            if (animator != null) animator.SetBool("isWalking", true);
+            UpdateStateText("Weak Walking");
         }
-
-        if (hp <= 60f)
+        else if (hp <= 50f)
         {
-            _currentSpeed = walkSpeed;
-
-            if (animator != null)
-                animator.SetBool("isWalking", true);
-
+            _currentSpeed = normalWalkSpeed;
+            if (animator != null) animator.SetBool("isWalking", true);
             UpdateStateText("Walking");
-            return;
         }
+        else if (hp <= 70f)
+        {
+            _currentSpeed = slowRunSpeed;
+            if (animator != null) animator.SetBool("isRunning", true);
+            UpdateStateText("Slow Run");
+        }
+        else if (hp <= 85f)
+        {
+            _currentSpeed = runSpeed;
+            if (animator != null) animator.SetBool("isRunning", true);
+            UpdateStateText("Running");
+        }
+        else // hp > 85%
+        {
+            _currentSpeed = fastRunSpeed;
+            if (animator != null) animator.SetBool("isRunning", true);
+            UpdateStateText("Fast Run");
+        }
+    }
 
-        _currentSpeed = runSpeed;
+    private void Die()
+    {
+        _isDead = true;
+        _currentSpeed = 0f;
 
         if (animator != null)
-            animator.SetBool("isRunning", true);
+            animator.SetBool("isDead", true);
 
-        UpdateStateText("Running");
+        UpdateStateText("Dead");
+        TriggerGameOver();
     }
 
     private void SetAllAnimationsFalse()
@@ -133,14 +168,11 @@ public class RemyController : MonoBehaviour
 
         animator.SetBool("isRunning", false);
         animator.SetBool("isWalking", false);
-        animator.SetBool("isWeak", false);
         animator.SetBool("isDead", false);
     }
 
     private void TriggerGameOver()
     {
-        UpdateStateText("Dead");
-
         if (gameOverPanel != null)
             gameOverPanel.SetActive(true);
 
@@ -157,27 +189,46 @@ public class RemyController : MonoBehaviour
     {
         float hp = HealthPct;
 
+        // Update score text
         if (scoreText != null)
             scoreText.text = "Score: " + _score;
 
+        // Update health text
         if (healthText != null)
             healthText.text = "Health: " + hp.ToString("F0") + "%";
 
+        // Update health bar
         if (healthBar != null)
         {
             healthBar.value = hp / 100f;
 
-            Image fill = healthBar.fillRect.GetComponent<Image>();
-
-            if (fill != null)
+            // Change health bar color based on health percentage
+            if (healthBar.fillRect != null)
             {
-                if (hp > 60f)
-                    fill.color = Color.green;
-                else if (hp > 30f)
-                    fill.color = Color.yellow;
-                else
-                    fill.color = Color.red;
+                Image fill = healthBar.fillRect.GetComponent<Image>();
+                if (fill != null)
+                {
+                    if (hp > 60f)
+                        fill.color = Color.green;
+                    else if (hp > 30f)
+                        fill.color = Color.yellow;
+                    else
+                        fill.color = Color.red;
+                }
             }
         }
+
+        // Update top bar panel if it exists
+        if (topBarPanel != null)
+        {
+            topBarPanel.UpdateScore(_score);
+            topBarPanel.UpdateHealth(_score, maxScore);
+        }
+    }
+
+    public void ShowChoiceMessage(string message)
+    {
+        if (topBarPanel != null)
+            topBarPanel.SetQuestion(message);
     }
 }
