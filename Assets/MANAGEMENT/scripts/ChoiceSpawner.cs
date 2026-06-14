@@ -14,10 +14,10 @@ public class ChoiceSpawner : MonoBehaviour
 
     [Header("Road Settings")]
     public float roadCenterX = 400f;
-    public float laneOffset = 6f;
+    public float laneOffset = 12f;
 
     [Header("Spawn Settings")]
-    public float startZ = 20f;
+    public float startZ = 50f;
     public float distanceBetweenPairs = 50f;
     public float itemY = -0.3f;
 

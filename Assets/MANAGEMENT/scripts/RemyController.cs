@@ -29,8 +29,8 @@ public class RemyController : MonoBehaviour
 
     [Header("Lane Movement")]
     public float laneSpeed = 8f;
-    public float minX = 392f;
-    public float maxX = 408f;
+    public float minX = 388f;
+    public float maxX = 412f;
 
     private int _score;
     private bool _isDead = false;
