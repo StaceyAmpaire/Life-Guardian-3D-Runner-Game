@@ -49,7 +49,7 @@ public class NutritionWarningUI : MonoBehaviour
         warningActive = true;
 
         warningText.text =
-    " Nutrition Tip: " + message;
+    " Health Tip: " + message;
 
         float t = 0f;
 

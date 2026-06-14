@@ -4,6 +4,9 @@ using TMPro;
 public class CollectActivity : MonoBehaviour
 {
     [SerializeField] private string activityName;
+    [SerializeField]
+[TextArea]
+private string activityMessage;
 
     [Header("Rewards / Penalties")]
     [SerializeField] private int dewValue = 10;
@@ -49,9 +52,12 @@ public class CollectActivity : MonoBehaviour
 
             // Apply activity values
             MasterInfo.dewCount =
-                Mathf.Max(0,
-                MasterInfo.dewCount + dewValue);
+    Mathf.Max(0,
+    MasterInfo.dewCount + dewValue);
 
+MasterInfo.totalDewCount =
+    Mathf.Max(0,
+    MasterInfo.totalDewCount + dewValue);
             MasterInfo.treeLife =
                 Mathf.Clamp(
                     MasterInfo.treeLife + lifeValue,
@@ -60,13 +66,18 @@ public class CollectActivity : MonoBehaviour
 
             // Count healthy vs unhealthy activities
             if (lifeValue > 0)
-            {
-                MasterInfo.healthyCount++;
-            }
-            else
-            {
-                MasterInfo.unhealthyCount++;
-            }
+{
+    MasterInfo.healthyCount++;
+}
+else
+{
+    MasterInfo.unhealthyCount++;
+
+    if (NutritionWarningUI.Instance != null)
+    {
+        NutritionWarningUI.Instance.ShowWarning(activityMessage);
+    }
+}
 
             // Update UI
             if (MasterInfo.Instance != null)

@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectActivity
   activityName: Smoking
+  activityMessage: Smoking damages the lungs and increases the risk of heart disease.
   dewValue: -13
   lifeValue: -10
   activitySound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}

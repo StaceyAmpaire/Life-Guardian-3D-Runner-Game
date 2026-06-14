@@ -431,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectActivity
   activityName: Wine
+  activityMessage: Drinking too much wine can increase the risk of liver disease.
   dewValue: -9
   lifeValue: -7
   activitySound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}

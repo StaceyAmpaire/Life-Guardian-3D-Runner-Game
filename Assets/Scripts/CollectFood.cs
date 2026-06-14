@@ -55,7 +55,10 @@ private string nutritionMessage;
 
         // Apply custom food values
         MasterInfo.dewCount =
-            Mathf.Max(0, MasterInfo.dewCount + dewValue);
+    Mathf.Max(0, MasterInfo.dewCount + dewValue);
+
+MasterInfo.totalDewCount =
+    Mathf.Max(0, MasterInfo.totalDewCount + dewValue);
 
         MasterInfo.treeLife =
             Mathf.Clamp(MasterInfo.treeLife + lifeValue, 0, 100);

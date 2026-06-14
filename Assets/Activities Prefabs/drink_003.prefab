@@ -410,6 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectActivity
   activityName: Alcohol
+  activityMessage: Alcohol consumption can harm the liver, heart, and brain.
   dewValue: -10
   lifeValue: -8
   activitySound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}

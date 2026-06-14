@@ -1992,7 +1992,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Nutrition Tip: Fast food may contribute to weight gain.'
+  m_text: 'Health Tip: Fast food may contribute to weight gain.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cb06d15e4267a4146b34a34a34d5ce8f, type: 2}
   m_sharedMaterial: {fileID: 7183010975702411502, guid: cb06d15e4267a4146b34a34a34d5ce8f, type: 2}

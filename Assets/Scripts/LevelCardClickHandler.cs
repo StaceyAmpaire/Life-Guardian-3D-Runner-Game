@@ -7,6 +7,8 @@ public class LevelCardClickHandler : MonoBehaviour
 {
     [SerializeField] private string pathName; // "Prevention" or "Management" (for reference)
     [SerializeField] private string sceneToLoad = "Run"; // Scene to load
+    [SerializeField] private bool isActivityLevel = false; // Set to true for activity level cards
+    
     private Button button;
 
     private void Start()
@@ -16,13 +18,18 @@ public class LevelCardClickHandler : MonoBehaviour
     }
 
     private void OnLevelCardClicked()
+{
+    Debug.Log("Clicked: " + gameObject.name);
+
+    if (isActivityLevel && !MasterInfo.level2Unlocked)
     {
-        Debug.Log($"Clicked level card from {pathName} path! Loading {sceneToLoad}...");
-        
-        // Save scene name for LoadingManager
-        PlayerPrefs.SetString("SceneToLoad", sceneToLoad);
-        
-        // Load the LOADING scene (not the game scene directly)
-        SceneManager.LoadScene("LoadingScene");  // ← Changed this!
+        Debug.Log("LOCKED");
+        return;
     }
+
+    MasterInfo.ResetRunData();
+
+    PlayerPrefs.SetString("SceneToLoad", sceneToLoad);
+    SceneManager.LoadScene("LoadingScene");
+}
 }

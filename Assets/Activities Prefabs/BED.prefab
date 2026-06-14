@@ -331,6 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectActivity
   activityName: Sleeping
+  activityMessage: Oversleeping regularly leads to reduced physical activity.
   dewValue: -4
   lifeValue: -5
   activitySound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
