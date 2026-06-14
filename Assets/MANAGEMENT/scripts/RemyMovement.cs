@@ -5,14 +5,19 @@ public class RemyMovement : MonoBehaviour
     public float forwardSpeed = 5f;
     public float laneSpeed = 8f;
 
-    public float minX = 388f;
-    public float maxX = 412f;
+    public float roadCenterX = 400f;
+    public float roadWidth = 40f;
 
+    private float minX;
+    private float maxX;
     private float _originalY;
 
     void Start()
     {
         _originalY = transform.position.y;
+
+        minX = roadCenterX - roadWidth / 2f;
+        maxX = roadCenterX + roadWidth / 2f;
     }
 
     void Update()
@@ -25,7 +30,6 @@ public class RemyMovement : MonoBehaviour
         pos.x += horizontal * laneSpeed * Time.deltaTime;
 
         pos.x = Mathf.Clamp(pos.x, minX, maxX);
-
         pos.y = _originalY;
 
         transform.position = pos;

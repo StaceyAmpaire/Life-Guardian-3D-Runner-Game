@@ -54,6 +54,13 @@ public class RemyController : MonoBehaviour
         // Ensure time scale is normal
         Time.timeScale = 1f;
 
+        // Lock rotation on X and Z to prevent tilting
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        }
+
         // Initialize state and UI
         UpdateState();
         UpdateUI();
@@ -63,16 +70,23 @@ public class RemyController : MonoBehaviour
     {
         if (_isDead) return;
 
-        // Forward movement based on current speed
-        Vector3 pos = transform.position;
-        pos.z += _currentSpeed * Time.deltaTime;
+        // FORWARD movement - using world Z axis (camera independent)
+        Vector3 movement = new Vector3(0f, 0f, _currentSpeed * Time.deltaTime);
 
-        // Lane movement (horizontal)
+        // LANE movement - horizontal on X axis
         float horizontal = Input.GetAxis("Horizontal");
-        pos.x += horizontal * laneSpeed * Time.deltaTime;
-        pos.x = Mathf.Clamp(pos.x, minX, maxX);
+        movement.x = horizontal * laneSpeed * Time.deltaTime;
 
+        // Apply movement
+        transform.position += movement;
+
+        // Clamp X position
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, minX, maxX);
         transform.position = pos;
+
+        // Keep rotation fixed (no turning)
+        transform.rotation = Quaternion.identity;
     }
 
     public void GoodChoice()
