@@ -315,8 +315,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
   type: 1
-  dewValue: -3
-  lifeValue: -3
+  dewValue: -5
+  lifeValue: -5
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Rolex
   nutritionMessage: 

@@ -22,7 +22,7 @@ public class TutorialManager : MonoBehaviour
 
 tutorialPages.Add("Your decisions will directly impact your Dew Points.\n\nMake healthy choices to gain them, but beware—unhealthy decisions will cause you to lose them.");
 
-tutorialPages.Add("Dew Points nourish and maintain the ancient Baobab Tree, the very heart of our world.\n\nNow, brave Guardian, choose your path forward: will you focus on Prevention or Management?");
+tutorialPages.Add("Dew Points nourish and maintain the ancient Baobab Tree, the very heart of our world.\n\nNow, brave Guardian, your choices may lead you to Prevention or Management");
 
 tutorialPages.Add("Disclaimer: This journey teaches healthy choices, but it is not medical advice.\n\nAlways seek guidance from a healthcare professional.");
 

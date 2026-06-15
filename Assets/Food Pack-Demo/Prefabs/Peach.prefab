@@ -301,8 +301,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
   type: 0
-  dewValue: 5
-  lifeValue: 5
+  dewValue: 10
+  lifeValue: 10
   foodSound: {fileID: 8300000, guid: 7f8ac7fcf79b3814ca8d093106797889, type: 3}
   foodName: Peach
   nutritionMessage: 
