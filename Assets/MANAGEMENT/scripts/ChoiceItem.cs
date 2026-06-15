@@ -27,21 +27,21 @@ public class ChoiceItem : MonoBehaviour
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        RemyController remy = other.GetComponent<RemyController>();
+{
+    RemyController remy = other.GetComponent<RemyController>();
 
-        if (remy == null) return;
+    if (remy == null) return;
 
-        if (points >= 0)
-            remy.AddPoints(points);
-        else
-            remy.RemovePoints(-points);
+    if (points >= 0)
+        remy.AddPoints(points);
+    else
+        remy.RemovePoints(-points);
 
-        remy.ShowChoiceMessage(message);
+    remy.ShowChoiceMessage(message);
 
-        // Play good or bad sound based on points
+    if (AudioManager.Instance != null)
         AudioManager.Instance.PlayChoiceSound(points);
 
-        Destroy(gameObject);
-    }
+    Destroy(gameObject);
+}
 }

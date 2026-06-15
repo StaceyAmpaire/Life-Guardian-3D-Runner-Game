@@ -16,27 +16,34 @@ public class MealPopupManager : MonoBehaviour
     private bool supperShown;
 
     private float timer;
-    private int currentScore = 0;  // This accumulates across ALL meals
+    private int currentScore = 0;
 
-    // Variables for 3-choice limit
     private List<FoodChoice> selectedFoodsForCurrentMeal = new List<FoodChoice>();
     private int maxChoicesPerMeal = 3;
 
-    // Reference to RemyController to add points
     public RemyController remyController;
+    public TopBarPanel topBarPanel;
+    public FinalChoicePanel finalChoicePanel;
+
     [Header("Question UI")]
     public GameObject questionObject;
 
     void Start()
     {
-        popupPanel.SetActive(false);
+        if (popupPanel != null)
+            popupPanel.SetActive(false);
 
         if (questionText != null)
             questionText.gameObject.SetActive(false);
 
-        // Find RemyController if not assigned
         if (remyController == null)
-            remyController = FindObjectOfType<RemyController>();
+            remyController = FindFirstObjectByType<RemyController>();
+
+        if (topBarPanel == null)
+            topBarPanel = FindFirstObjectByType<TopBarPanel>();
+
+        if (finalChoicePanel == null)
+            finalChoicePanel = FindFirstObjectByType<FinalChoicePanel>();
 
         if (scoreText != null)
             scoreText.text = "Score: " + currentScore;
@@ -75,7 +82,8 @@ public class MealPopupManager : MonoBehaviour
     {
         selectedFoodsForCurrentMeal.Clear();
 
-        popupPanel.SetActive(true);
+        if (popupPanel != null)
+            popupPanel.SetActive(true);
 
         if (questionText != null)
         {
@@ -83,78 +91,82 @@ public class MealPopupManager : MonoBehaviour
             questionText.text = question;
         }
 
-        // Stop any existing coroutine to prevent premature closing
         StopAllCoroutines();
-        // Start the auto-hide timer (but don't let it close if user is selecting)
-        StartCoroutine(AutoHidePopupAfterSeconds(8f)); // Increased time
+        StartCoroutine(AutoHidePopupAfterSeconds(3f));
     }
 
     IEnumerator AutoHidePopupAfterSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        
-        // Only auto-close if no selections were made
-        if (selectedFoodsForCurrentMeal.Count == 0)
-        {
-            popupPanel.SetActive(false);
-            if (questionText != null)
-                questionText.gameObject.SetActive(false);
-        }
+        ClosePopup();
     }
 
-    IEnumerator HidePopupAfterSeconds(float seconds)
-    {
-        yield return new WaitForSeconds(seconds);
-
-        popupPanel.SetActive(false);
-
-        if (questionText != null)
-            questionText.gameObject.SetActive(false);
-    }
     public void SelectFood(FoodChoice food)
+    {
+        Debug.Log("BUTTON CLICKED - Food: " + (food != null ? food.foodName : "NULL"));
+
+        if (food == null)
         {
-            Debug.Log("BUTTON CLICKED");
-
-            if (food == null)
-            {
-                Debug.LogWarning("FoodChoice is missing!");
-                return;
-            }
-
-            if (remyController != null)
-            {
-                if (food.points >= 0)
-                    remyController.AddPoints(food.points);
-                else
-                    remyController.RemovePoints(-food.points);
-            }
-            else
-            {
-                Debug.LogError("RemyController is not assigned in MealPopupManager!");
-            }
-
-            if (AudioManager.Instance != null)
-                AudioManager.Instance.PlayChoiceSound(food.points);
-
-            Debug.Log("Selected: " + food.foodName + " points: " + food.points);
-
-            selectedFoodsForCurrentMeal.Add(food);
-
-            if (selectedFoodsForCurrentMeal.Count >= maxChoicesPerMeal)
-            {
-                ClosePopup();
-            }
+            Debug.LogWarning("FoodChoice is missing!");
+            return;
         }
 
-            // Optional: Method to get current score
-            public int GetCurrentScore()
+        if (selectedFoodsForCurrentMeal.Contains(food))
+        {
+            Debug.Log("Already selected: " + food.foodName);
+            return;
+        }
+
+        if (selectedFoodsForCurrentMeal.Count >= maxChoicesPerMeal)
+        {
+            Debug.Log("Maximum choices reached.");
+            return;
+        }
+
+        selectedFoodsForCurrentMeal.Add(food);
+
+        if (remyController != null)
+        {
+            if (food.points >= 0)
+                remyController.AddPoints(food.points);
+            else
+                remyController.RemovePoints(-food.points);
+
+            if (topBarPanel != null)
             {
-                return currentScore;
+                topBarPanel.UpdateScore(remyController.CurrentScore);
+                topBarPanel.UpdateHealth(remyController.CurrentScore, remyController.maxScore);
             }
+        }
+        else
+        {
+            Debug.LogError("RemyController is not assigned in MealPopupManager!");
+        }
+
+        if (finalChoicePanel != null)
+        {
+            finalChoicePanel.AddChoice(food.foodName, food.foodMessage, food.points);
+        }
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayChoiceSound(food.points);
+
+        Debug.Log("Selected: " + food.foodName + " points: " + food.points);
+    }
+
+    public int GetCurrentScore()
+    {
+        if (remyController != null)
+            return remyController.CurrentScore;
+
+        return currentScore;
+    }
 
     public void ClosePopup()
     {
-        popupPanel.SetActive(false);
+        if (popupPanel != null)
+            popupPanel.SetActive(false);
+
         if (questionText != null)
             questionText.gameObject.SetActive(false);
     }

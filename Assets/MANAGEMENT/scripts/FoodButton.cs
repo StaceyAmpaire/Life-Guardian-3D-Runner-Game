@@ -9,10 +9,20 @@ public class FoodButton : MonoBehaviour
 
     public void SelectFood()
     {
-        remyController.AddPoints(points);
+        Debug.Log("Food Button Clicked!");
 
-        AudioManager.Instance.PlayChoiceSound(points);
+        if (remyController != null)
+        {
+            if (points >= 0)
+                remyController.AddPoints(points);
+            else
+                remyController.RemovePoints(-points);
+        }
 
-        popupManager.ClosePopup();
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.PlayChoiceSound(points);
+
+        if (popupManager != null)
+            popupManager.ClosePopup();
     }
 }

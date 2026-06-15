@@ -19,6 +19,7 @@ public class TopBarPanel : MonoBehaviour
     private bool _gameEnded = false;
     public EndGame endGame;
     public RemyController remyController;
+    public FinalChoicePanel finalChoicePanel;
 
     void Start()
     {
@@ -31,6 +32,9 @@ public class TopBarPanel : MonoBehaviour
             pauseButton.onClick.AddListener(TogglePause);
 
         UpdateTimerUI();
+
+        if (finalChoicePanel == null)
+        finalChoicePanel = FindFirstObjectByType<FinalChoicePanel>();
     }
 
     void Update()
@@ -83,8 +87,12 @@ public class TopBarPanel : MonoBehaviour
 
     public void TogglePause()
     {
+        Debug.Log("PAUSE BUTTON CLICKED");
+
         _isPaused = !_isPaused;
         Time.timeScale = _isPaused ? 0f : 1f;
+
+        Debug.Log("Time Scale = " + Time.timeScale);
     }
 
     public void EndGame()
@@ -99,6 +107,15 @@ public class TopBarPanel : MonoBehaviour
         else
         {
             Debug.LogError("EndGame script is not assigned in TopBarPanel Inspector!");
+        }
+
+        if (finalChoicePanel != null)
+        {
+            finalChoicePanel.ShowFinalChoices();
+        }
+        else
+        {
+            Debug.LogWarning("FinalChoicePanel is not assigned!");
         }
     }
 }
