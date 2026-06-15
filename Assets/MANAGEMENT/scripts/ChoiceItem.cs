@@ -39,6 +39,9 @@ public class ChoiceItem : MonoBehaviour
 
         remy.ShowChoiceMessage(message);
 
+        // Play good or bad sound based on points
+        AudioManager.Instance.PlayChoiceSound(points);
+
         Destroy(gameObject);
     }
 }

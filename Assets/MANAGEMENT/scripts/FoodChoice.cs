@@ -7,4 +7,6 @@ public class FoodChoice : MonoBehaviour
 
     [TextArea(2, 4)]
     public string foodMessage;
+
+    
 }

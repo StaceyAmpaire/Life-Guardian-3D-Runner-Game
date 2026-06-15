@@ -18,7 +18,7 @@ public class ChoiceSpawner : MonoBehaviour
 
     [Header("Spawn Settings")]
     public float startZ = 50f;
-    public float distanceBetweenPairs = 50f;
+    public float distanceBetweenPairs = 100f;
     public float itemY = -0.3f;
 
     private void Start()

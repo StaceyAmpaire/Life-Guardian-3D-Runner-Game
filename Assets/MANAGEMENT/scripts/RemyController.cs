@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Collections;
 
 public class RemyController : MonoBehaviour
 {
@@ -35,6 +36,8 @@ public class RemyController : MonoBehaviour
     private int _score;
     private bool _isDead = false;
     private float _currentSpeed;
+    public EndGame endGame;
+    
 
     public float HealthPct => (float)_score / maxScore * 100f;
 
@@ -118,77 +121,94 @@ public class RemyController : MonoBehaviour
     }
 
     private void UpdateState()
-    {
-        float hp = HealthPct;
-        
-        // Clear current animations
-        SetAllAnimationsFalse();
+        {
+            float hp = HealthPct;
 
-        // Check for death (health <= 10%)
-        if (hp <= 10f)
-        {
-            Die();
-            return;
-        }
+            SetAllAnimationsFalse();
 
-        // Determine movement state based on health percentage
-        if (hp <= 30f)
-        {
-            _currentSpeed = weakWalkSpeed;
-            if (animator != null) animator.SetBool("isWalking", true);
-            UpdateStateText("Weak Walking");
+            // Game over at 10% or below
+            if (hp <= 10f)
+            {
+                Die();
+                return;
+            }
+
+            // 11% - 49% = Walking / Maintaining
+            if (hp < 50f)
+            {
+                _currentSpeed = normalWalkSpeed;
+
+                if (animator != null)
+                    animator.SetBool("isWalking", true);
+
+                UpdateStateText("Maintaining");
+            }
+            // 50% - 74% = Gaining
+            else if (hp < 75f)
+            {
+                _currentSpeed = slowRunSpeed;
+
+                if (animator != null)
+                    animator.SetBool("isGaining", true);
+
+                UpdateStateText("Gaining");
+            }
+            // 75% - 100% = Running
+            else
+            {
+                _currentSpeed = runSpeed;
+
+                if (animator != null)
+                    animator.SetBool("isRunning", true);
+
+                UpdateStateText("Running");
+            }
         }
-        else if (hp <= 50f)
-        {
-            _currentSpeed = normalWalkSpeed;
-            if (animator != null) animator.SetBool("isWalking", true);
-            UpdateStateText("Walking");
-        }
-        else if (hp <= 70f)
-        {
-            _currentSpeed = slowRunSpeed;
-            if (animator != null) animator.SetBool("isRunning", true);
-            UpdateStateText("Slow Run");
-        }
-        else if (hp <= 85f)
-        {
-            _currentSpeed = runSpeed;
-            if (animator != null) animator.SetBool("isRunning", true);
-            UpdateStateText("Running");
-        }
-        else // hp > 85%
-        {
-            _currentSpeed = fastRunSpeed;
-            if (animator != null) animator.SetBool("isRunning", true);
-            UpdateStateText("Fast Run");
-        }
-    }
 
     private void Die()
-    {
-        _isDead = true;
-        _currentSpeed = 0f;
+        {
+            _isDead = true;
+            _currentSpeed = 0f;
 
-        if (animator != null)
-            animator.SetBool("isDead", true);
+            SetAllAnimationsFalse();
 
-        UpdateStateText("Dead");
-        TriggerGameOver();
-    }
+            if (animator != null)
+                animator.SetBool("isDead", true);
 
+            UpdateStateText("Dead");
+
+            StartCoroutine(StopGameAfterDeathAnimation());
+        }
+
+        private IEnumerator StopGameAfterDeathAnimation()
+            {
+                yield return new WaitForSeconds(2f);
+
+                TriggerGameOver();
+
+                Time.timeScale = 0f;
+            }
     private void SetAllAnimationsFalse()
-    {
-        if (animator == null) return;
+        {
+            if (animator == null) return;
 
-        animator.SetBool("isRunning", false);
-        animator.SetBool("isWalking", false);
-        animator.SetBool("isDead", false);
-    }
-
+            animator.SetBool("isRunning", false);
+            animator.SetBool("isWalking", false);
+            animator.SetBool("isGaining", false);
+            animator.SetBool("isDead", false);
+        }
     private void TriggerGameOver()
     {
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(true);
+        string message = GetPerformanceMessage(_score);
+
+        if (endGame != null)
+        {
+            endGame.ShowGameOver(message);
+        }
+        else
+        {
+            Debug.LogError("EndGame is not assigned in RemyController Inspector!");
+        }
 
         Debug.Log("Game Over! Remy died.");
     }
@@ -244,5 +264,28 @@ public class RemyController : MonoBehaviour
     {
         if (topBarPanel != null)
             topBarPanel.SetQuestion(message);
+    }
+
+    
+    public int CurrentScore
+    {
+        get { return _score; }
+    }
+
+
+public string GetPerformanceMessage(int score)
+    {
+        float percentage = ((float)score / maxScore) * 100f;
+
+        if (percentage <= 10f)
+            return "Remy's health became critical due to unhealthy lifestyle choices.";
+
+        if (percentage < 50f)
+            return "Remy struggled to maintain good health. More healthy habits are needed.";
+
+        if (percentage < 75f)
+            return "Good effort! Remy improved health through better lifestyle choices.";
+
+        return "Excellent! Remy maintained a healthy lifestyle and made outstanding choices.";
     }
 }

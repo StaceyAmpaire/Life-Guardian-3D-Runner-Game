@@ -10,21 +10,19 @@ public class TopBarPanel : MonoBehaviour
     public TMP_Text questionText;
     public TMP_Text timerText;
     public Slider healthBar;
-    public GameObject gameOverPanel;
     public Button pauseButton;
 
     [Header("Timer")]
-    public float gameTime = 120f; // 2 minutes
+    public float gameTime = 90f; // 1.5 minutes
     private float _timeLeft;
     private bool _isPaused = false;
     private bool _gameEnded = false;
+    public EndGame endGame;
+    public RemyController remyController;
 
     void Start()
     {
         _timeLeft = gameTime;
-
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(false);
 
         if (questionText != null)
             questionText.text = "What do you choose?";
@@ -92,9 +90,15 @@ public class TopBarPanel : MonoBehaviour
     public void EndGame()
     {
         _gameEnded = true;
-        Time.timeScale = 0f;
 
-        if (gameOverPanel != null)
-            gameOverPanel.SetActive(true);
+        if (endGame != null)
+        {
+            string message = remyController.GetPerformanceMessage(remyController.CurrentScore);
+            endGame.ShowGameOver(message);
+        }
+        else
+        {
+            Debug.LogError("EndGame script is not assigned in TopBarPanel Inspector!");
+        }
     }
 }
