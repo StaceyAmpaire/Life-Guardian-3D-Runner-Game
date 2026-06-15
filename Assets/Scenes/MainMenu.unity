@@ -2188,8 +2188,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.52801514, y: -68.05092}
-  m_SizeDelta: {x: 716.2539, y: 421.4142}
+  m_AnchoredPosition: {x: 0.52801514, y: -123.648}
+  m_SizeDelta: {x: 716.254, y: 532.608}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &485474253
 MonoBehaviour:
@@ -7199,7 +7199,7 @@ MonoBehaviour:
   playerNameText: {fileID: 1873278118}
   foodInputField: {fileID: 567679139}
   dewReward: 10
-  rewardCooldownHours: 0.001
+  rewardCooldownHours: 5
 --- !u!1 &1810428325
 GameObject:
   m_ObjectHideFlags: 0

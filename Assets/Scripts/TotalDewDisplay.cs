@@ -5,7 +5,7 @@ public class TotalDewDisplay : MonoBehaviour
 {
     [SerializeField] private TMP_Text dewText;
 
-    void Start()
+    void Update()
     {
         dewText.text =
             "Healing Dew: " + MasterInfo.totalDewCount;

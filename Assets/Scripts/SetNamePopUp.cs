@@ -16,7 +16,7 @@ public class PopupUI : MonoBehaviour
     [Header("Reward")]
     public int dewReward = 10;
 
-    public float rewardCooldownHours = 0.001f;
+    public float rewardCooldownHours = 5f;
 
     private string lastRewardKey = "LastFoodRewardTime";
 
@@ -72,7 +72,8 @@ public class PopupUI : MonoBehaviour
 
         if (CanClaimReward())
         {
-            MasterInfo.dewCount += dewReward;
+            
+            MasterInfo.totalDewCount += dewReward;
 
             if (MasterInfo.Instance != null)
             {
@@ -89,6 +90,9 @@ public class PopupUI : MonoBehaviour
         }
 
         foodInputField.text = "";
+
+        
+       
     }
 
     void LoadPlayerName()
