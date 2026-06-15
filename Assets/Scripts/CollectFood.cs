@@ -60,6 +60,8 @@ private string nutritionMessage;
 MasterInfo.totalDewCount =
     Mathf.Max(0, MasterInfo.totalDewCount + dewValue);
 
+    MasterInfo.CheckAndUnlockLevel2();
+
         MasterInfo.treeLife =
             Mathf.Clamp(MasterInfo.treeLife + lifeValue, 0, 100);
 

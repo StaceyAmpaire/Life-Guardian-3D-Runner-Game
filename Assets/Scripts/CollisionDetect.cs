@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 public class CollisionDetect : MonoBehaviour
 {
     [SerializeField] GameObject thePlayer;
-    [SerializeField] GameObject playerAnim;
+    private Animator maleAnimator;
+private Animator femaleAnimator;
     [SerializeField] AudioSource collisionFX;
     [SerializeField] GameObject mainCam;
     [SerializeField] GameObject fadeOut;
@@ -14,7 +15,14 @@ public class CollisionDetect : MonoBehaviour
 {
     
     thePlayer = GameObject.Find("Guardian");
-    playerAnim = GameObject.Find("Running (1)");
+   GameObject male = GameObject.Find("Running (1)");
+GameObject female = GameObject.Find("Running (2)");
+
+if (male != null)
+    maleAnimator = male.GetComponent<Animator>();
+
+if (female != null)
+    femaleAnimator = female.GetComponent<Animator>();
     mainCam = GameObject.Find("Main Camera");
     fadeOut = GameObject.Find("FadeOut");
 
@@ -31,7 +39,11 @@ public class CollisionDetect : MonoBehaviour
     {
         collisionFX.Play();
         thePlayer.GetComponent<PlayerMovement>().enabled = false;
-        playerAnim.GetComponent<Animator>().Play("Stumblerunner1");
+        if (maleAnimator != null)
+    maleAnimator.Play("Stumblerunner1");
+
+if (femaleAnimator != null)
+    femaleAnimator.Play("Stumblerunner1");
         mainCam.GetComponent<Animator>().Play("CollisionCam");
 
         yield return new WaitForSeconds(2);

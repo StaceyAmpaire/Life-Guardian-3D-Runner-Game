@@ -13,15 +13,32 @@ public class PlayerGrowth : MonoBehaviour
     private Vector3 baseScale;
 
     void Start()
+{
+    // Wait one frame for AvatarLoader to finish
+    Invoke("FindActiveAvatar", 0.01f);
+}
+
+void FindActiveAvatar()
+{
+    foreach (Transform child in transform)
     {
-        if (bodyModel == null)
-            bodyModel = transform;
-
-        // SAVE CURRENT SCALE AS BASE SIZE
-        baseScale = bodyModel.localScale;
-
-        ApplyBodySize();
+        if ((child.gameObject.name == "Running (1)" || child.gameObject.name == "Running (2)") 
+            && child.gameObject.activeInHierarchy)
+        {
+            bodyModel = child;
+            Debug.Log("✅ Found active avatar: " + bodyModel.name);
+            break;
+        }
     }
+
+    if (bodyModel == null)
+        bodyModel = transform;
+
+    baseScale = bodyModel.localScale;
+    ApplyBodySize();
+}
+
+
 
     public void HandleHealthyStreak(int streak)
     {

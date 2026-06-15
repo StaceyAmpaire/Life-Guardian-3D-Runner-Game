@@ -77,6 +77,7 @@ public TMP_Text feedbackText;
     if (CanClaimReward())
     {
         MasterInfo.totalDewCount += dewReward;
+        MasterInfo.CheckAndUnlockLevel2();
 
         if (MasterInfo.Instance != null)
         {

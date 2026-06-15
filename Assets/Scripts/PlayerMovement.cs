@@ -120,14 +120,14 @@ public class PlayerMovement : MonoBehaviour
             Animator[] anims = GetComponentsInChildren<Animator>(true);
 
             foreach (Animator anim in anims)
-            {
-                if (anim.gameObject.name == "Running (1)")
-                {
-                    anim.ResetTrigger("Jump");
-                    anim.SetTrigger("Jump");
-                    break;
-                }
-            }
+{
+    if (anim.gameObject.name == "Running (1)" ||
+        anim.gameObject.name == "Running (2)")
+    {
+        anim.ResetTrigger("Jump");
+        anim.SetTrigger("Jump");
+    }
+}
         }
     }
 
