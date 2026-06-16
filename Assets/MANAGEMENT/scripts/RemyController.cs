@@ -121,50 +121,55 @@ public class RemyController : MonoBehaviour
         UpdateUI();
     }
 
-    private void UpdateState()
+ private void UpdateState()
+    {
+    float hp = HealthPct;
+
+    SetAllAnimationsFalse();
+
+    if (hp <= 10f)
+    {
+        Die();
+        return;
+    }
+
+    if (hp < 50f)
+    {
+        _currentSpeed = normalWalkSpeed;
+
+        if (animator != null)
         {
-            float hp = HealthPct;
-
-            SetAllAnimationsFalse();
-
-            // Game over at 10% or below
-            if (hp <= 10f)
-            {
-                Die();
-                return;
-            }
-
-            // 11% - 49% = Walking / Maintaining
-            if (hp < 50f)
-            {
-                _currentSpeed = normalWalkSpeed;
-
-                if (animator != null)
-                    animator.SetBool("isWalking", true);
-
-                UpdateStateText("Maintaining");
-            }
-            // 50% - 74% = Gaining
-            else if (hp < 75f)
-            {
-                _currentSpeed = slowRunSpeed;
-
-                if (animator != null)
-                    animator.SetBool("isGaining", true);
-
-                UpdateStateText("Gaining");
-            }
-            // 75% - 100% = Running
-            else
-            {
-                _currentSpeed = runSpeed;
-
-                if (animator != null)
-                    animator.SetBool("isRunning", true);
-
-                UpdateStateText("Running");
-            }
+            animator.SetBool("isWalking", true);
+            animator.CrossFade("Walking", 0.1f);
         }
+
+        UpdateStateText("Walking");
+    }
+    else if (hp < 75f)
+    {
+        _currentSpeed = slowRunSpeed;
+
+        if (animator != null)
+        {
+            animator.SetBool("isGaining", true);
+            animator.CrossFade("SlowRun", 0.1f);
+        }
+
+        UpdateStateText("Gaining");
+    }
+    else
+    {
+        _currentSpeed = runSpeed;
+
+        if (animator != null)
+        {
+            animator.SetBool("isRunning", true);
+            animator.CrossFade("Running", 0.1f);
+        }
+
+        UpdateStateText("Running");
+    }
+}
 
     private void Die()
         {
