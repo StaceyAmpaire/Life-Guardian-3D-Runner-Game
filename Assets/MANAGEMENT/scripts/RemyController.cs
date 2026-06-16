@@ -37,7 +37,7 @@ public class RemyController : MonoBehaviour
     private bool _isDead = false;
     private float _currentSpeed;
     public EndGame endGame;
-    public FinalChoicePanel finalChoicePanel;
+   
 
     public float HealthPct => (float)_score / maxScore * 100f;
 
@@ -50,9 +50,7 @@ public class RemyController : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>();
 
-        if (finalChoicePanel == null)
-        finalChoicePanel = FindFirstObjectByType<FinalChoicePanel>();
-
+    
         // Hide game over panel at start
         if (gameOverPanel != null)
             gameOverPanel.SetActive(false);
@@ -212,17 +210,7 @@ public class RemyController : MonoBehaviour
             {
                 Debug.LogError("EndGame is not assigned in RemyController Inspector!");
             }
-
-            // Show all choices made during the game
-            if (finalChoicePanel != null)
-            {
-                finalChoicePanel.ShowFinalChoices();
-            }
-            else
-            {
-                Debug.LogWarning("FinalChoicePanel is not assigned!");
-            }
-
+            
             Debug.Log("Game Over! Remy died.");
         }
 

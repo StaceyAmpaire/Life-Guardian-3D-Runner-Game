@@ -14,18 +14,19 @@ public class ChoiceItem : MonoBehaviour
 
     [Header("Name Label")]
     public TMP_Text nameLabel;
+    public ChoiceFeedbackPopup feedbackPopup;
 
     void Start()
-    {
-        if (nameLabel != null)
         {
-            nameLabel.text = choiceName;
+            if (nameLabel != null)
+            {
+                nameLabel.text = choiceName;
+                nameLabel.transform.localPosition = new Vector3(0f, 2f, 0f);
+            }
 
-            // Position label above the choice
-            nameLabel.transform.localPosition = new Vector3(0f, 2f, 0f);
+            if (feedbackPopup == null)
+                feedbackPopup = FindFirstObjectByType<ChoiceFeedbackPopup>();
         }
-    }
-
     private void OnTriggerEnter(Collider other)
 {
     RemyController remy = other.GetComponent<RemyController>();
@@ -38,6 +39,10 @@ public class ChoiceItem : MonoBehaviour
         remy.RemovePoints(-points);
 
     remy.ShowChoiceMessage(message);
+    if (feedbackPopup != null)
+    {
+        feedbackPopup.ShowFeedback(points);
+    }
 
     if (AudioManager.Instance != null)
         AudioManager.Instance.PlayChoiceSound(points);

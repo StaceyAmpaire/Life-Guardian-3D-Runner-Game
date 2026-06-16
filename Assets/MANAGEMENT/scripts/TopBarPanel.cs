@@ -19,7 +19,7 @@ public class TopBarPanel : MonoBehaviour
     private bool _gameEnded = false;
     public EndGame endGame;
     public RemyController remyController;
-    public FinalChoicePanel finalChoicePanel;
+   
 
     void Start()
     {
@@ -33,8 +33,7 @@ public class TopBarPanel : MonoBehaviour
 
         UpdateTimerUI();
 
-        if (finalChoicePanel == null)
-        finalChoicePanel = FindFirstObjectByType<FinalChoicePanel>();
+        
     }
 
     void Update()
@@ -104,18 +103,6 @@ public class TopBarPanel : MonoBehaviour
             string message = remyController.GetPerformanceMessage(remyController.CurrentScore);
             endGame.ShowGameOver(message);
         }
-        else
-        {
-            Debug.LogError("EndGame script is not assigned in TopBarPanel Inspector!");
-        }
-
-        if (finalChoicePanel != null)
-        {
-            finalChoicePanel.ShowFinalChoices();
-        }
-        else
-        {
-            Debug.LogWarning("FinalChoicePanel is not assigned!");
-        }
+        
     }
 }

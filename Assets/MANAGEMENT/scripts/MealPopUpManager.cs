@@ -23,10 +23,11 @@ public class MealPopupManager : MonoBehaviour
 
     public RemyController remyController;
     public TopBarPanel topBarPanel;
-    public FinalChoicePanel finalChoicePanel;
+  
 
     [Header("Question UI")]
     public GameObject questionObject;
+    public ChoiceFeedbackPopup feedbackPopup;
 
     void Start()
     {
@@ -42,13 +43,12 @@ public class MealPopupManager : MonoBehaviour
         if (topBarPanel == null)
             topBarPanel = FindFirstObjectByType<TopBarPanel>();
 
-        if (finalChoicePanel == null)
-            finalChoicePanel = FindFirstObjectByType<FinalChoicePanel>();
+        if (feedbackPopup == null)
+            feedbackPopup = FindFirstObjectByType<ChoiceFeedbackPopup>();
 
         if (scoreText != null)
             scoreText.text = "Score: " + currentScore;
     }
-
     void Update()
     {
         timer += Time.deltaTime;
@@ -143,11 +143,7 @@ public class MealPopupManager : MonoBehaviour
             Debug.LogError("RemyController is not assigned in MealPopupManager!");
         }
 
-        if (finalChoicePanel != null)
-        {
-            finalChoicePanel.AddChoice(food.foodName, food.foodMessage, food.points);
-        }
-
+    
         if (AudioManager.Instance != null)
             AudioManager.Instance.PlayChoiceSound(food.points);
 
