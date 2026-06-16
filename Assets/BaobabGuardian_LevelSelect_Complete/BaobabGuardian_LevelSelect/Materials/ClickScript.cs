@@ -53,47 +53,47 @@ public class ClickScript : MonoBehaviour
     }
 
     private void HandlePortalClick()
+{
+    int life = MasterInfo.treeLife;
+
+    // MANAGEMENT PORTAL
+    if (type == PortalType.Management)
     {
-        int life = MasterInfo.treeLife;
-
-        // MANAGEMENT PORTAL
-        if (type == PortalType.Management)
+        if (life < 50)
         {
-            if (life <= 45)
-            {
-                AlertManager.Instance.ShowAlert(
-                    "Tree Life is critical. Entering Management."
-                );
+            AlertManager.Instance.ShowAlert(
+                "Tree Life is below 50. Entering Management Path."
+            );
 
-                SceneManager.LoadScene(managementScene);
-            }
-            else
-            {
-                AlertManager.Instance.ShowAlert(
-                    $"Management locked. Tree Life must fall to 45 or below. Current Life: {life}"
-                );
-            }
-
-            return;
+            SceneManager.LoadScene(managementScene);
+        }
+        else
+        {
+            AlertManager.Instance.ShowAlert(
+                $"Management Path is available when Tree Life is below 50.\nCurrent Life: {life}"
+            );
         }
 
-        // PREVENTION PORTAL
-        if (type == PortalType.Prevention)
-        {
-            if (life >= 55)
-            {
-                AlertManager.Instance.ShowAlert(
-                    "Prevention portal available."
-                );
+        return;
+    }
 
-                SceneManager.LoadScene(startScene);
-            }
-            else
-            {
-                AlertManager.Instance.ShowAlert(
-                    $"Prevention locked. Restore Tree Life to 55. Current Life: {life}"
-                );
-            }
+    // PREVENTION PORTAL
+    if (type == PortalType.Prevention)
+    {
+        if (life >= 50)
+        {
+            AlertManager.Instance.ShowAlert(
+                "Tree Life is healthy enough. Entering Prevention Path."
+            );
+
+            SceneManager.LoadScene(startScene);
+        }
+        else
+        {
+            AlertManager.Instance.ShowAlert(
+                $"Prevention Path unlocks at Tree Life 50 or higher.\nCurrent Life: {life}"
+            );
         }
     }
+}
 }

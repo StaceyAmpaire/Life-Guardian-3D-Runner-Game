@@ -2,14 +2,33 @@ using UnityEngine;
 
 public class AvatarMenuScale : MonoBehaviour
 {
-    Vector3 baseScale = new Vector3(0.4f, 0.4f, 1f);
+    private Vector3 originalScale;
+    private bool scaleInitialized = false;
 
     void Start()
     {
+        // Store the ORIGINAL scale once
+        if (!scaleInitialized)
+        {
+            originalScale = transform.localScale;
+            scaleInitialized = true;
+        }
+        
+        UpdateAvatarScale();
+    }
+
+    void Update()
+    {
+        UpdateAvatarScale();
+    }
+
+    void UpdateAvatarScale()
+    {
+        // Always multiply from the ORIGINAL scale, not the current scale
         transform.localScale = new Vector3(
-            baseScale.x * MasterInfo.bodyWeight,
-            baseScale.y,
-            baseScale.z * MasterInfo.bodyWeight
+            originalScale.x * MasterInfo.bodyWeight,
+            originalScale.y,
+            originalScale.z * MasterInfo.bodyWeight
         );
     }
 }

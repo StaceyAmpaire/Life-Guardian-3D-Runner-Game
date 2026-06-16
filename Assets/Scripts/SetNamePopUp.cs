@@ -1,6 +1,6 @@
 using UnityEngine;
 using TMPro;
-
+using System.Collections;
 public class PopupUI : MonoBehaviour
 {
     [Header("Popup")]
@@ -15,13 +15,17 @@ public class PopupUI : MonoBehaviour
 
     [Header("Reward")]
     public int dewReward = 10;
-
-    public float rewardCooldownHours = 0.001f;
+[Header("Feedback")]
+public GameObject feedbackPanel;
+public TMP_Text feedbackText;
+   public float rewardCooldownMinutes = 5f; //for immediate results; 0.001f
 
     private string lastRewardKey = "LastFoodRewardTime";
 
     private void Start()
     {
+        feedbackPanel.SetActive(false);
+
 #if UNITY_EDITOR
 
         // ONLY resets when pressing Play inside Unity editor
@@ -64,32 +68,41 @@ public class PopupUI : MonoBehaviour
     }
 
     public void LogFood()
+{
+    string enteredFood = foodInputField.text;
+
+    if (string.IsNullOrWhiteSpace(enteredFood))
+        return;
+
+    if (CanClaimReward())
     {
-        string enteredFood = foodInputField.text;
+        MasterInfo.totalDewCount += dewReward;
+        MasterInfo.CheckAndUnlockLevel2();
 
-        if (string.IsNullOrWhiteSpace(enteredFood))
-            return;
-
-        if (CanClaimReward())
+        if (MasterInfo.Instance != null)
         {
-            MasterInfo.dewCount += dewReward;
-
-            if (MasterInfo.Instance != null)
-            {
-                MasterInfo.Instance.UpdateDewDisplay();
-            }
-
-            SaveRewardTime();
-
-            Debug.Log("Reward Granted!");
-        }
-        else
-        {
-            Debug.Log("Reward already claimed.");
+            MasterInfo.Instance.UpdateDewDisplay();
         }
 
-        foodInputField.text = "";
+        SaveRewardTime();
+
+       
+
+        Debug.Log("Reward Granted!");
     }
+    else
+{
+    StartCoroutine(
+        ShowFeedback(
+            "You have already logged food recently. Please try again later."
+        )
+    );
+
+    Debug.Log("Reward already claimed.");
+}
+
+    foodInputField.text = "";
+}
 
     void LoadPlayerName()
     {
@@ -121,10 +134,10 @@ public class PopupUI : MonoBehaviour
         System.DateTime lastTime =
             System.DateTime.Parse(savedTime);
 
-        double hoursPassed =
-            (System.DateTime.Now - lastTime).TotalHours;
+        double minutesPassed =
+    (System.DateTime.Now - lastTime).TotalMinutes;
 
-        return hoursPassed >= rewardCooldownHours;
+return minutesPassed >= rewardCooldownMinutes;
     }
 
     void SaveRewardTime()
@@ -136,4 +149,13 @@ public class PopupUI : MonoBehaviour
 
         PlayerPrefs.Save();
     }
+    private IEnumerator ShowFeedback(string message)
+{
+    feedbackPanel.SetActive(true);
+    feedbackText.text = message;
+
+    yield return new WaitForSeconds(3f);
+
+    feedbackPanel.SetActive(false);
+}
 }

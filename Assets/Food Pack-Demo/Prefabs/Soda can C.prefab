@@ -115,8 +115,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190219
-  m_fontColor: {r: 0.5450981, g: 0, b: 0, a: 1}
+    rgba: 4278232538
+  m_fontColor: {r: 0.85490197, g: 0.64705884, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -313,10 +313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 547490e5e34dcfd44bba60c55fd6f662, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
-  type: 0
+  type: 1
+  dewValue: -9
+  lifeValue: -9
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Soda
-  bloodSugarImpact: 15
+  nutritionMessage: Soda contains high amounts of sugar.
 --- !u!82 &-8219390187177095043
 AudioSource:
   m_ObjectHideFlags: 0

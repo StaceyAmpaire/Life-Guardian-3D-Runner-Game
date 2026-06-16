@@ -1,0 +1,8 @@
+B:/3d runner/.utmp/RelWithDebInfo/3k3v0121/arm64-v8a/CMakeFiles/edit_cache.dir
+B:/3d runner/.utmp/RelWithDebInfo/3k3v0121/arm64-v8a/CMakeFiles/rebuild_cache.dir
+B:/3d runner/.utmp/RelWithDebInfo/3k3v0121/arm64-v8a/GameActivity/CMakeFiles/game.dir
+B:/3d runner/.utmp/RelWithDebInfo/3k3v0121/arm64-v8a/GameActivity/CMakeFiles/edit_cache.dir
+B:/3d runner/.utmp/RelWithDebInfo/3k3v0121/arm64-v8a/GameActivity/CMakeFiles/rebuild_cache.dir
+B:/3d runner/.utmp/RelWithDebInfo/3k3v0121/arm64-v8a/FramePacing/CMakeFiles/swappywrapper.dir
+B:/3d runner/.utmp/RelWithDebInfo/3k3v0121/arm64-v8a/FramePacing/CMakeFiles/edit_cache.dir
+B:/3d runner/.utmp/RelWithDebInfo/3k3v0121/arm64-v8a/FramePacing/CMakeFiles/rebuild_cache.dir

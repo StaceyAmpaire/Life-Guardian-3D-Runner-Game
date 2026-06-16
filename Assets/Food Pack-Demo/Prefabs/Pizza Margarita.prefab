@@ -318,8 +318,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectFood
   type: 0
+  dewValue: -6
+  lifeValue: -7
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Pizza
+  nutritionMessage: Over Consumption of pizza increases cholestrol.
 --- !u!114 &-5114603500539988416
 MonoBehaviour:
   m_ObjectHideFlags: 0

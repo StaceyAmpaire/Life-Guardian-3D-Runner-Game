@@ -54,6 +54,7 @@ public class MusicManager : MonoBehaviour
             case "MainMenu":
             case "EnvironmentChoice": // Your environment choice scene
             case "LevelSelectScene":
+            case "AvatarSelection":
                 PlayMenuMusic();
                 break;
 

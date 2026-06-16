@@ -18,7 +18,9 @@ public class SegmentGenerator : MonoBehaviour
 
     void Update()
     {
-        if (SceneManager.GetActiveScene().name != "Run") return;
+        if (SceneManager.GetActiveScene().name != "Run" &&
+    SceneManager.GetActiveScene().name != "Run_Activities")
+    return;
 
         if (creatingSegment == false)
         {
