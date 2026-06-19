@@ -35,6 +35,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/AvatarSelection.unity
     guid: 5f4ce430ee4fe1a4d9402fdb97b2d7dc
+  - enabled: 1
+    path: Assets/MANAGEMENT/ManagementScene.unity
+    guid: 8a7357d81a9bf9144838286ece7429fe
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

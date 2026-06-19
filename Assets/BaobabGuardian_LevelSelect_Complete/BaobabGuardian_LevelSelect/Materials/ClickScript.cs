@@ -15,7 +15,7 @@ public class ClickScript : MonoBehaviour
 
     [Header("Scene Names")]
     public string startScene = "EnvironmentChoice";
-    public string managementScene = "Management";
+    public string managementScene = "ManagementScene";
 
     void Update()
     {
@@ -59,21 +59,11 @@ public class ClickScript : MonoBehaviour
     // MANAGEMENT PORTAL
     if (type == PortalType.Management)
     {
-        if (life < 50)
-        {
-            AlertManager.Instance.ShowAlert(
-                "Tree Life is below 50. Entering Management Path."
-            );
+        AlertManager.Instance.ShowAlert(
+            "Entering Management Path."
+        );
 
-            SceneManager.LoadScene(managementScene);
-        }
-        else
-        {
-            AlertManager.Instance.ShowAlert(
-                $"Management Path is available when Tree Life is below 50.\nCurrent Life: {life}"
-            );
-        }
-
+        SceneManager.LoadScene(managementScene);
         return;
     }
 
@@ -91,7 +81,7 @@ public class ClickScript : MonoBehaviour
         else
         {
             AlertManager.Instance.ShowAlert(
-                $"Prevention Path unlocks at Tree Life 50 or higher.\nCurrent Life: {life}"
+                $"Tree Life is too low ({life}).\nRecover in the Management Path until Life reaches 50 or above."
             );
         }
     }

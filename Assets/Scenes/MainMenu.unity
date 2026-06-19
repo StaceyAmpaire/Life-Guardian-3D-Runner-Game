@@ -3468,8 +3468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClickScript
   type: 1
-  startScene: Management
-  managementScene: Management
+  startScene: ManagementScene
+  managementScene: ManagementScene
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -6664,7 +6664,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ClickScript
   type: 0
   startScene: EnvironmentChoice
-  managementScene: Management
+  managementScene: ManagementScene
 --- !u!1 &1548030449
 GameObject:
   m_ObjectHideFlags: 0
