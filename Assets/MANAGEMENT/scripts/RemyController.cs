@@ -23,27 +23,42 @@ public int badChoicePoints = 5;
     public Slider healthBar;
     public GameObject gameOverPanel;
     public TopBarPanel topBarPanel;
+  
 
     [Header("Animator")]
     public Animator animator;
 
     [Header("Lane Movement")]
-    public float laneSpeed = 8f;
-    public float minX = 388f;
-    public float maxX = 412f;
+public float laneDistance = 12f;
+public float laneChangeSpeed = 2f;
+public float centerOffset = 400f;
+
+private int currentLane = 1;
+private float targetX;
+private float xVelocity;
+private float currentX;
 
     private int _score;
+
+// Management-only health
+private int mgtHealth = 20;
     private bool _isDead = false;
     private float _currentSpeed;
     public EndGame endGame;
    
 
-    public float HealthPct => MasterInfo.treeLife;
+    public float HealthPct => mgtHealth;
 
     void Start()
     {
+      
+
         // Initialize score to 20% of max (1000 points if maxScore is 5000)
-       _score = MasterInfo.treeLife;
+        if (animator == null)
+{
+    animator = GetComponentInChildren<Animator>(true);
+}
+       _score = mgtHealth;
 
         // Get animator if not assigned
         if (animator == null)
@@ -67,30 +82,62 @@ public int badChoicePoints = 5;
         // Initialize state and UI
         UpdateState();
         UpdateUI();
+        targetX = centerOffset;
+currentX = transform.position.x;
     }
 
     void Update()
+{
+
+    if (_isDead)
+        return;
+
+    HandleInput();
+    MovePlayer();
+
+    transform.rotation = Quaternion.identity;
+    DebugAnimationState();
+}
+
+private void HandleInput()
+{
+    if (Input.GetKeyDown(KeyCode.LeftArrow) ||
+        Input.GetKeyDown(KeyCode.A))
     {
-        if (_isDead) return;
-
-        // FORWARD movement - using world Z axis (camera independent)
-        Vector3 movement = new Vector3(0f, 0f, _currentSpeed * Time.deltaTime);
-
-        // LANE movement - horizontal on X axis
-        float horizontal = Input.GetAxis("Horizontal");
-        movement.x = horizontal * laneSpeed * Time.deltaTime;
-
-        // Apply movement
-        transform.position += movement;
-
-        // Clamp X position
-        Vector3 pos = transform.position;
-        pos.x = Mathf.Clamp(pos.x, minX, maxX);
-        transform.position = pos;
-
-        // Keep rotation fixed (no turning)
-        transform.rotation = Quaternion.identity;
+        ChangeLane(-1);
     }
+
+    if (Input.GetKeyDown(KeyCode.RightArrow) ||
+        Input.GetKeyDown(KeyCode.D))
+    {
+        ChangeLane(1);
+    }
+}
+
+private void ChangeLane(int direction)
+{
+    currentLane = Mathf.Clamp(currentLane + direction, 0, 2);
+
+    targetX =
+        (currentLane - 1) * laneDistance +
+        centerOffset;
+}
+private void MovePlayer()
+{
+    if (_isDead) return;
+    // Smooth lane movement
+    currentX = Mathf.Lerp(
+        currentX,
+        targetX,
+        laneChangeSpeed * Time.deltaTime);
+
+    Vector3 pos = transform.position;
+
+    pos.x = currentX;
+    pos.z += _currentSpeed * Time.deltaTime;
+
+    transform.position = pos;
+}
 
     public void GoodChoice()
     {
@@ -106,41 +153,56 @@ public int badChoicePoints = 5;
 {
     if (_isDead) return;
 
-    MasterInfo.treeLife = Mathf.Clamp(
-        MasterInfo.treeLife + amount,
-        0,
-        100);
+    mgtHealth = Mathf.Clamp(
+    mgtHealth + amount,
+    0,
+    100);
 
-    _score = MasterInfo.treeLife;
+_score = mgtHealth;
 
-    MasterInfo.Instance.UpdateLifeDisplay();
+// Update main life too
+MasterInfo.treeLife = Mathf.Clamp(
+    MasterInfo.treeLife + amount,
+    0,
+    100);
 
-    UpdateState();
-    UpdateUI();
+MasterInfo.Instance.UpdateLifeDisplay();
+
+UpdateState();
+UpdateUI();
 }
 
    public void RemovePoints(int amount)
 {
     if (_isDead) return;
 
-    MasterInfo.treeLife = Mathf.Clamp(
-        MasterInfo.treeLife - amount,
-        0,
-        100);
+    mgtHealth = Mathf.Clamp(
+    mgtHealth - amount,
+    0,
+    100);
 
-    _score = MasterInfo.treeLife;
+_score = mgtHealth;
 
-    MasterInfo.Instance.UpdateLifeDisplay();
+// Update main life too
+MasterInfo.treeLife = Mathf.Clamp(
+    MasterInfo.treeLife - amount,
+    0,
+    100);
 
-    UpdateState();
-    UpdateUI();
+MasterInfo.Instance.UpdateLifeDisplay();
+
+UpdateState();
+UpdateUI();
 }
 
  private void UpdateState()
-    {
+{
+     if (_isDead) return;
     float hp = HealthPct;
 
     SetAllAnimationsFalse();
+
+    
 
     if (hp <= 10f)
     {
@@ -148,62 +210,50 @@ public int badChoicePoints = 5;
         return;
     }
 
-    if (hp < 50f)
+    if (hp < 40f)
     {
         _currentSpeed = normalWalkSpeed;
-
-        if (animator != null)
-        {
-            animator.SetBool("isWalking", true);
-            animator.CrossFade("Walking", 0.1f);
-        }
-
+        animator.CrossFade("Walking", 0.1f);
         UpdateStateText("Walking");
     }
-    else if (hp < 75f)
+    else if (hp < 80f)
     {
         _currentSpeed = slowRunSpeed;
-
-        if (animator != null)
-        {
-            animator.SetBool("isGaining", true);
-            animator.CrossFade("SlowRun", 0.1f);
-        }
-
+        animator.CrossFade("Slow Run", 0.1f);
         UpdateStateText("Gaining");
     }
     else
     {
         _currentSpeed = runSpeed;
-
-        if (animator != null)
-        {
-            animator.SetBool("isRunning", true);
-            animator.CrossFade("Running", 0.1f);
-        }
-
+        animator.CrossFade("Medium Run", 0.1f);
         UpdateStateText("Running");
     }
+    Debug.Log("Health = " + hp);
 }
 
     private void Die()
-        {
-            _isDead = true;
-            _currentSpeed = 0f;
+{
+    if (_isDead) return;
 
-            SetAllAnimationsFalse();
+    _isDead = true;
+    _currentSpeed = 0f;
 
-            if (animator != null)
-                animator.SetBool("isDead", true);
+    SetAllAnimationsFalse();
 
-            UpdateStateText("Dead");
+    if (animator != null)
+    {
+        animator.SetBool("isDead", true);
+        animator.CrossFade("Dying", 0.1f); // 🔥 FORCE PLAY
+    }
 
-            StartCoroutine(StopGameAfterDeathAnimation());
-        }
+    UpdateStateText("Dead");
+
+    StartCoroutine(StopGameAfterDeathAnimation());
+}
 
         private IEnumerator StopGameAfterDeathAnimation()
             {
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(4f);
 
                 TriggerGameOver();
 
@@ -288,9 +338,9 @@ public int badChoicePoints = 5;
     }
 
     
-   public int CurrentScore
+public int CurrentScore
 {
-    get { return MasterInfo.treeLife; }
+    get { return mgtHealth; }
 }
 
 
@@ -309,4 +359,24 @@ public string GetPerformanceMessage(int score)
 
         return "Excellent! Remy maintained a healthy lifestyle and made outstanding choices.";
     }
+    private void DebugAnimationState()
+{
+    if (animator == null) return;
+
+    AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0);
+
+    if (state.IsName("Running"))
+        Debug.Log("🟢 Currently: Running");
+    else if (state.IsName("Walking"))
+        Debug.Log("🟡 Currently: Walking");
+    else if (state.IsName("Slow Run"))
+        Debug.Log("🟠 Currently: Slow Run");
+    else if (state.IsName("Medium Run"))
+        Debug.Log("🔵 Currently: Medium Run");
+   else if (state.IsName("Dying"))
+    Debug.Log("🔴 Currently: Dying");
+    else
+        Debug.Log("⚠️ Unknown Animation State: " + state.fullPathHash);
+}
+
 }
