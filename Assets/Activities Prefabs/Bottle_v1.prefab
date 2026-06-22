@@ -341,7 +341,7 @@ MonoBehaviour:
   activityMessage: Drinking water keeps the body hydrated.
   dewValue: 10
   lifeValue: 8
-  activitySound: {fileID: 8300000, guid: 7f8ac7fcf79b3814ca8d093106797889, type: 3}
+  activitySound: {fileID: 8300000, guid: 953e8c4b2676f964ea21295660e1b811, type: 3}
 --- !u!65 &-1221825863138240837
 BoxCollider:
   m_ObjectHideFlags: 0

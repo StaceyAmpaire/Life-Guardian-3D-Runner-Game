@@ -44,14 +44,20 @@ private string nutritionMessage;
     if (other.GetComponent<PlayerMovement>() != null || other.CompareTag("Player"))
     {
         // Play sound
-        if (foodSound != null)
-        {
-            AudioSource.PlayClipAtPoint(foodSound, transform.position);
-        }
-        else if (foodFX != null && foodFX.clip != null)
-        {
-            foodFX.Play();
-        }
+       bool canPlaySfx = AudioSettingsManager.Instance == null ||
+                  AudioSettingsManager.Instance.SfxEnabled;
+
+if (canPlaySfx)
+{
+    if (foodSound != null)
+    {
+        AudioSource.PlayClipAtPoint(foodSound, transform.position);
+    }
+    else if (foodFX != null && foodFX.clip != null)
+    {
+        foodFX.Play();
+    }
+}
 
         // Apply custom food values
         MasterInfo.dewCount =
@@ -62,8 +68,8 @@ MasterInfo.totalDewCount =
 
     MasterInfo.CheckAndUnlockLevel2();
 
-        MasterInfo.treeLife =
-            Mathf.Clamp(MasterInfo.treeLife + lifeValue, 0, 100);
+        MasterInfo.SetTreeLife(MasterInfo.treeLife + lifeValue);
+        MasterInfo.SaveData();
 
         // Healthy food
         if (lifeValue > 0)
@@ -106,10 +112,20 @@ else
 }
 
         if (MasterInfo.Instance != null)
-        {
-            MasterInfo.Instance.UpdateLifeDisplay();
-            MasterInfo.Instance.UpdateDewDisplay();
-        }
+{
+    MasterInfo.Instance.UpdateDewDisplay();
+}
+        if (AchievementManager.Instance != null)
+{
+    bool isHealthy = lifeValue > 0;
+    int dewEarned = dewValue > 0 ? dewValue : 0;
+
+    AchievementManager.Instance.RegisterFoodChoice(
+        foodName,
+        isHealthy,
+        dewEarned
+    );
+}
 
         gameObject.SetActive(false);
     }

@@ -5,9 +5,6 @@ public class PlayerGrowth : MonoBehaviour
     public PlayerMovement movement;
     public Transform bodyModel;
 
-    public float speedStep = 1f;
-    public float maxSpeed = 15f;
-    public float minSpeed = 5f;
 
     // Will store the avatar's ORIGINAL size
     private Vector3 baseScale;
@@ -42,19 +39,16 @@ void FindActiveAvatar()
 
     public void HandleHealthyStreak(int streak)
     {
-        // gentle decrease
-        MasterInfo.bodyWeight -= 0.2f;
+       MasterInfo.bodyWeight -= 0.4f;
 
-        // minimum = normal size
-        MasterInfo.bodyWeight = Mathf.Clamp(MasterInfo.bodyWeight, 1f, 2.5f);
+MasterInfo.bodyWeight =
+Mathf.Max(MasterInfo.bodyWeight,1f);
+MasterInfo.SaveData();
+//MasterInfo.bodyWeight = Mathf.Clamp(MasterInfo.bodyWeight,1f,2.5f);
 
-        ApplyBodySize();
+ApplyBodySize();
 
-        if (movement != null)
-        {
-            movement.forwardSpeed += speedStep;
-            movement.forwardSpeed = Mathf.Min(maxSpeed, movement.forwardSpeed);
-        }
+       
     }
 
     public void HandleUnhealthyStreak(int streak)
@@ -62,20 +56,23 @@ void FindActiveAvatar()
         // stronger increase
         MasterInfo.bodyWeight += 0.4f;
 
+MasterInfo.bodyWeight =
+Mathf.Min(MasterInfo.bodyWeight,2.5f);
+MasterInfo.SaveData();
+
+ApplyBodySize();
+
         MasterInfo.bodyWeight = Mathf.Clamp(MasterInfo.bodyWeight, 1f, 2.5f);
 
         ApplyBodySize();
 
-        if (movement != null)
-        {
-            movement.forwardSpeed -= speedStep;
-            movement.forwardSpeed = Mathf.Max(minSpeed, movement.forwardSpeed);
-        }
+       
     }
 
     void ApplyBodySize()
     {
         float weight = MasterInfo.bodyWeight;
+        
 
         bodyModel.localScale = new Vector3(
             baseScale.x * weight,

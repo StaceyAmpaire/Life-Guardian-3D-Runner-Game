@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float laneDistance = 4f;
     public float laneChangeSpeed = 15f;
     public float centerOffset = -6.0f;
+    private float baseSpeed;
 
     [Header("Jump Settings")]
     public float jumpHeight = 2f;
@@ -34,6 +35,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        baseSpeed = forwardSpeed;
 
         targetX = (currentLane - 1) * laneDistance + centerOffset;
         transform.position = new Vector3(targetX, transform.position.y, transform.position.z);
@@ -43,6 +45,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        forwardSpeed =
+Mathf.Clamp(
+baseSpeed + MasterInfo.activityFitness,
+7f,
+13f);
         HandleInput();
         MovePlayer();
 

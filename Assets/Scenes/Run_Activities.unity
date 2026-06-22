@@ -911,6 +911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 316144710}
   - component: {fileID: 316144711}
+  - component: {fileID: 316144712}
   m_Layer: 0
   m_Name: BGM
   m_TagString: Untagged
@@ -1030,6 +1031,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &316144712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316144709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8881b312e15f14dbcb10203596268e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunBGMController
 --- !u!1 &342636097
 GameObject:
   m_ObjectHideFlags: 0
@@ -3010,7 +3023,6 @@ GameObject:
   - component: {fileID: 1095726504}
   - component: {fileID: 1095726503}
   - component: {fileID: 1095726507}
-  - component: {fileID: 1095726509}
   - component: {fileID: 1095726510}
   - component: {fileID: 1095726511}
   m_Layer: 0
@@ -3139,23 +3151,6 @@ MonoBehaviour:
   gravity: -20
   maxJumps: 2
   minSwipeDistance: 50
---- !u!114 &1095726509
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1095726502}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0edf54e5b4042d47acce561ce8f12c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerGrowth
-  movement: {fileID: 1095726507}
-  bodyModel: {fileID: 1106226196}
-  speedStep: 1
-  maxSpeed: 6
-  minSpeed: 2
 --- !u!143 &1095726510
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3996,7 +3991,7 @@ MonoBehaviour:
   maxActivities: 25
   spawnInterval: 1
   player: {fileID: 1095726506}
-  unhealthyChance: 0.3
+  unhealthyChance: 0.51
   laneDistance: 4
   centerOffset: -6
 --- !u!1 &1305797825

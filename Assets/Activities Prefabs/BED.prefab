@@ -171,7 +171,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -2.0979633, y: -1.8605955, z: 13.402253, w: 3.6523435}
+  m_margin: {x: -2.0979633, y: -1.6703346, z: 13.402253, w: 3.6523435}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0
@@ -327,7 +327,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93058169eacf5be4ebee9e5b1f98454a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectActivity
-  activityName: Sleeping
+  activityName: 12hrs Sleep
   activityMessage: Oversleeping regularly leads to reduced physical activity.
   dewValue: -4
   lifeValue: -5

@@ -36,6 +36,7 @@ public class ChoiceItem : MonoBehaviour
 
     MasterInfo.dewCount += 2;
     MasterInfo.totalDewCount += 2;
+    MasterInfo.SaveData();
 }
 else
 {

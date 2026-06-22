@@ -911,6 +911,7 @@ GameObject:
   m_Component:
   - component: {fileID: 316144710}
   - component: {fileID: 316144711}
+  - component: {fileID: 316144712}
   m_Layer: 0
   m_Name: BGM
   m_TagString: Untagged
@@ -1030,6 +1031,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &316144712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316144709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db8881b312e15f14dbcb10203596268e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RunBGMController
 --- !u!1 &342636097
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,6 +2766,7 @@ MonoBehaviour:
   - {fileID: 3021202739269259910, guid: 7097ad9a888dd99458dca648bfbe4c7d, type: 3}
   - {fileID: 7995497868466590050, guid: c5240644e1df8364aa4cea385c7cf092, type: 3}
   - {fileID: 6363132578887343074, guid: f4101459db0ec4643a455fd25bc032e7, type: 3}
+  - {fileID: 1955646447211667299, guid: f0fd291f44341a44fb9dc45391324a25, type: 3}
   unhealthyPrefabs:
   - {fileID: 6666603328627169091, guid: 0329acc1efc28324e94f5bd5a062069e, type: 3}
   - {fileID: 4850541254266803216, guid: 1d08eb9304ef2d247b4c953f91c9ca75, type: 3}
@@ -3222,9 +3236,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGrowth
   movement: {fileID: 1095726507}
   bodyModel: {fileID: 1106226196}
-  speedStep: 1
-  maxSpeed: 6
-  minSpeed: 2
 --- !u!143 &1095726510
 CharacterController:
   m_ObjectHideFlags: 0

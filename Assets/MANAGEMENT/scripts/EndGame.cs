@@ -63,6 +63,10 @@ public class EndGame : MonoBehaviour
                     }
                 }
             }
+            if (AchievementManager.Instance != null)
+{
+    AchievementManager.Instance.MarkFirstRunComplete();
+}
         }
     public void RestartGame()
     {

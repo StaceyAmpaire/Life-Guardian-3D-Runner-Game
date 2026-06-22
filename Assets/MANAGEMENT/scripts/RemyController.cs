@@ -37,7 +37,11 @@ private int currentLane = 1;
 private float targetX;
 private float xVelocity;
 private float currentX;
+[Header("Swipe Controls")]
+public float minSwipeDistance = 50f;
 
+private Vector2 touchStartPos;
+private bool isSwiping = false;
     private int _score;
 
 // Management-only health
@@ -101,6 +105,7 @@ currentX = transform.position.x;
 
 private void HandleInput()
 {
+    // Keyboard controls
     if (Input.GetKeyDown(KeyCode.LeftArrow) ||
         Input.GetKeyDown(KeyCode.A))
     {
@@ -111,6 +116,53 @@ private void HandleInput()
         Input.GetKeyDown(KeyCode.D))
     {
         ChangeLane(1);
+    }
+
+    // Mobile swipe controls
+    HandleSwipeInput();
+}
+
+private void HandleSwipeInput()
+{
+    if (Input.touchCount <= 0)
+        return;
+
+    Touch touch = Input.GetTouch(0);
+
+    switch (touch.phase)
+    {
+        case TouchPhase.Began:
+            touchStartPos = touch.position;
+            isSwiping = true;
+            break;
+
+        case TouchPhase.Moved:
+
+            if (!isSwiping)
+                return;
+
+            Vector2 swipeDelta = touch.position - touchStartPos;
+
+            if (Mathf.Abs(swipeDelta.x) > minSwipeDistance)
+            {
+                if (swipeDelta.x > 0)
+                {
+                    ChangeLane(1);   // swipe right
+                }
+                else
+                {
+                    ChangeLane(-1);  // swipe left
+                }
+
+                isSwiping = false;
+            }
+
+            break;
+
+        case TouchPhase.Ended:
+        case TouchPhase.Canceled:
+            isSwiping = false;
+            break;
     }
 }
 
@@ -149,50 +201,34 @@ private void MovePlayer()
         RemovePoints(badChoicePoints);
     }
 
-    public void AddPoints(int amount)
+   public void AddPoints(int amount)
 {
     if (_isDead) return;
 
-    mgtHealth = Mathf.Clamp(
-    mgtHealth + amount,
-    0,
-    100);
+    mgtHealth = Mathf.Clamp(mgtHealth + amount, 0, 100);
+    _score = mgtHealth;
 
-_score = mgtHealth;
+    // Update main game life using MasterInfo helper
+    MasterInfo.SetTreeLife(MasterInfo.treeLife + amount);
+    MasterInfo.SaveData();
 
-// Update main life too
-MasterInfo.treeLife = Mathf.Clamp(
-    MasterInfo.treeLife + amount,
-    0,
-    100);
-
-MasterInfo.Instance.UpdateLifeDisplay();
-
-UpdateState();
-UpdateUI();
+    UpdateState();
+    UpdateUI();
 }
 
-   public void RemovePoints(int amount)
+  public void RemovePoints(int amount)
 {
     if (_isDead) return;
 
-    mgtHealth = Mathf.Clamp(
-    mgtHealth - amount,
-    0,
-    100);
+    mgtHealth = Mathf.Clamp(mgtHealth - amount, 0, 100);
+    _score = mgtHealth;
 
-_score = mgtHealth;
+    // Update main game life using MasterInfo helper
+    MasterInfo.SetTreeLife(MasterInfo.treeLife - amount);
+    MasterInfo.SaveData();
 
-// Update main life too
-MasterInfo.treeLife = Mathf.Clamp(
-    MasterInfo.treeLife - amount,
-    0,
-    100);
-
-MasterInfo.Instance.UpdateLifeDisplay();
-
-UpdateState();
-UpdateUI();
+    UpdateState();
+    UpdateUI();
 }
 
  private void UpdateState()

@@ -1,6 +1,7 @@
 using UnityEngine;
 using TMPro;
 using System.Collections;
+
 public class PopupUI : MonoBehaviour
 {
     [Header("Popup")]
@@ -10,47 +11,58 @@ public class PopupUI : MonoBehaviour
     public TMP_InputField nameInputField;
     public TMP_Text playerNameText;
 
-    [Header("Food Logging")]
-    public TMP_InputField foodInputField;
+    [Header("Feedback")]
+    public GameObject feedbackPanel;
+    public TMP_Text feedbackText;
 
-    [Header("Reward")]
-    public int dewReward = 10;
-[Header("Feedback")]
-public GameObject feedbackPanel;
-public TMP_Text feedbackText;
-   public float rewardCooldownMinutes = 5f; //for immediate results; 0.001f
+    [Header("Reward Cooldown")]
+    public float rewardCooldownMinutes = 5f;
+
+    [Header("Audio UI")]
+public TMP_Text musicButtonText;
+public TMP_Text sfxButtonText;
 
     private string lastRewardKey = "LastFoodRewardTime";
 
     private void Start()
     {
-        feedbackPanel.SetActive(false);
+        if (feedbackPanel != null)
+            feedbackPanel.SetActive(false);
 
 #if UNITY_EDITOR
-
-        // ONLY resets when pressing Play inside Unity editor
+        // Hold Shift when pressing Play if you want to reset editor test data
         if (Input.GetKey(KeyCode.LeftShift))
         {
             PlayerPrefs.DeleteKey("PlayerName");
             PlayerPrefs.DeleteKey(lastRewardKey);
         }
-
 #endif
 
+        
         LoadPlayerName();
+        UpdateAudioButtonTexts();
     }
 
     public void OpenPopup()
     {
-        popupPanel.SetActive(true);
-        nameInputField.ActivateInputField();
+        if (popupPanel != null)
+            popupPanel.SetActive(true);
+
+        if (nameInputField != null)
+            nameInputField.ActivateInputField();
+
+            UpdateAudioButtonTexts();
     }
 
     public void ClosePopup()
     {
-        popupPanel.SetActive(false);
+        if (popupPanel != null)
+            popupPanel.SetActive(false);
     }
 
+    // =========================================================
+    // PLAYER NAME
+    // =========================================================
     public void SavePlayerName()
     {
         string enteredName = nameInputField.text;
@@ -58,64 +70,24 @@ public TMP_Text feedbackText;
         if (!string.IsNullOrWhiteSpace(enteredName))
         {
             playerNameText.text = enteredName;
-
             MasterInfo.SetPlayerName(enteredName);
 
             PlayerPrefs.SetString("PlayerName", enteredName);
-
             PlayerPrefs.Save();
         }
     }
-
-    public void LogFood()
-{
-    string enteredFood = foodInputField.text;
-
-    if (string.IsNullOrWhiteSpace(enteredFood))
-        return;
-
-    if (CanClaimReward())
-    {
-        MasterInfo.totalDewCount += dewReward;
-        MasterInfo.CheckAndUnlockLevel2();
-
-        if (MasterInfo.Instance != null)
-        {
-            MasterInfo.Instance.UpdateDewDisplay();
-        }
-
-        SaveRewardTime();
-
-       
-
-        Debug.Log("Reward Granted!");
-    }
-    else
-{
-    StartCoroutine(
-        ShowFeedback(
-            "You have already logged food recently. Please try again later."
-        )
-    );
-
-    Debug.Log("Reward already claimed.");
-}
-
-    foodInputField.text = "";
-}
 
     void LoadPlayerName()
     {
         if (PlayerPrefs.HasKey("PlayerName"))
         {
-            string savedName =
-                PlayerPrefs.GetString("PlayerName");
+            string savedName = PlayerPrefs.GetString("PlayerName");
 
             playerNameText.text = savedName;
-
             MasterInfo.SetPlayerName(savedName);
 
-            nameInputField.text = savedName;
+            if (nameInputField != null)
+                nameInputField.text = savedName;
         }
         else
         {
@@ -123,21 +95,81 @@ public TMP_Text feedbackText;
         }
     }
 
+    // =========================================================
+    // FOOD CHOICE
+    // =========================================================
+    public void ChooseApple()      => ChooseFood("Apple", true, 10);
+    public void ChooseAvocado()    => ChooseFood("Avocado", true, 9);
+    public void ChooseWatermelon() => ChooseFood("Watermelon", true, 10);
+    public void ChooseFish()       => ChooseFood("Fish", true, 10);
+
+    public void ChooseBurger()     => ChooseFood("Burger", false, 3);
+    public void ChooseFries()      => ChooseFood("Fries", false, 3);
+    public void ChooseSoda()       => ChooseFood("Soda", false, 1);
+    public void ChooseChocolate()  => ChooseFood("Chocolate", false, 4);
+
+    private void ChooseFood(string foodName, bool isHealthy, int dewReward)
+    {
+        if (!CanClaimReward())
+        {
+            StartCoroutine(
+                ShowFeedback("You already made a food choice recently. Please try again later.")
+            );
+            return;
+        }
+
+        // Give dew reward
+        MasterInfo.dewCount += dewReward;
+        MasterInfo.totalDewCount += dewReward;
+
+        // Optional tracking of healthy/unhealthy daily choices
+        if (isHealthy)
+            MasterInfo.healthyCount++;
+        else
+            MasterInfo.unhealthyCount++;
+
+        // Update achievements if you want daily popup food choices
+        // to count toward food achievements too
+        if (AchievementManager.Instance != null)
+        {
+            AchievementManager.Instance.RegisterFoodChoice(
+                foodName,
+                isHealthy,
+                dewReward
+            );
+        }
+
+        // Check dew-based unlocks
+        MasterInfo.CheckAndUnlockLevel2();
+
+        // Refresh dew text in UI
+        if (MasterInfo.Instance != null)
+            MasterInfo.Instance.UpdateDewDisplay();
+
+        SaveRewardTime();
+
+        StartCoroutine(
+            ShowFeedback($"You chose {foodName}! +{dewReward} Healing Dew")
+        );
+
+        Debug.Log($"Food chosen: {foodName} | Healthy: {isHealthy} | Reward: {dewReward}");
+    }
+
+    // =========================================================
+    // COOLDOWN
+    // =========================================================
     bool CanClaimReward()
     {
         if (!PlayerPrefs.HasKey(lastRewardKey))
             return true;
 
-        string savedTime =
-            PlayerPrefs.GetString(lastRewardKey);
-
-        System.DateTime lastTime =
-            System.DateTime.Parse(savedTime);
+        string savedTime = PlayerPrefs.GetString(lastRewardKey);
+        System.DateTime lastTime = System.DateTime.Parse(savedTime);
 
         double minutesPassed =
-    (System.DateTime.Now - lastTime).TotalMinutes;
+            (System.DateTime.Now - lastTime).TotalMinutes;
 
-return minutesPassed >= rewardCooldownMinutes;
+        return minutesPassed >= rewardCooldownMinutes;
     }
 
     void SaveRewardTime()
@@ -149,13 +181,71 @@ return minutesPassed >= rewardCooldownMinutes;
 
         PlayerPrefs.Save();
     }
+
+    // =========================================================
+    // FEEDBACK
+    // =========================================================
     private IEnumerator ShowFeedback(string message)
+    {
+        if (feedbackPanel == null || feedbackText == null)
+            yield break;
+
+        feedbackPanel.SetActive(true);
+        feedbackText.text = message;
+
+        yield return new WaitForSeconds(3f);
+
+        feedbackPanel.SetActive(false);
+    }
+
+    void UpdateAudioButtonTexts()
 {
-    feedbackPanel.SetActive(true);
-    feedbackText.text = message;
+    if (musicButtonText != null)
+    {
+        bool musicOn = AudioSettingsManager.Instance == null ||
+                       AudioSettingsManager.Instance.MusicEnabled;
 
-    yield return new WaitForSeconds(3f);
+        musicButtonText.text = musicOn ? "Music: ON" : "Music: OFF";
+    }
 
-    feedbackPanel.SetActive(false);
+    if (sfxButtonText != null)
+    {
+        bool sfxOn = AudioSettingsManager.Instance == null ||
+                     AudioSettingsManager.Instance.SfxEnabled;
+
+        sfxButtonText.text = sfxOn ? "SFX: ON" : "SFX: OFF";
+    }
 }
+
+
+public void ToggleMusic()
+{
+    if (AudioSettingsManager.Instance != null)
+    {
+        AudioSettingsManager.Instance.ToggleMusic();
+    }
+
+    if (MusicManager.Instance != null)
+        MusicManager.Instance.ApplyMusicSetting();
+
+    if (AudioManager.Instance != null)
+        AudioManager.Instance.ApplyAudioSettings();
+
+    RunBGMController runBgm = FindFirstObjectByType<RunBGMController>();
+    if (runBgm != null)
+        runBgm.ApplyMusicSetting();
+
+    UpdateAudioButtonTexts();
+}
+public void ToggleSfx()
+{
+    if (AudioSettingsManager.Instance != null)
+    {
+        AudioSettingsManager.Instance.ToggleSfx();
+    }
+
+    UpdateAudioButtonTexts();
+}
+
+    
 }

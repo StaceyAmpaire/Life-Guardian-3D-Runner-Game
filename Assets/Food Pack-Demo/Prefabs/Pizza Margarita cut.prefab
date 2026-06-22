@@ -112,7 +112,7 @@ MonoBehaviour:
   lifeValue: -4
   foodSound: {fileID: 8300000, guid: 85205e15e3bdff34a9b860759b230ba7, type: 3}
   foodName: Pizza
-  nutritionMessage: 
+  nutritionMessage: Over Consumption of pizza increases cholestrol.
 --- !u!82 &2772454708615110116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -377,8 +377,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278232538
-  m_fontColor: {r: 0.85490197, g: 0.64705884, b: 0, a: 1}
+    rgba: 4293322470
+  m_fontColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -395,8 +395,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 6
+  m_fontSizeBase: 6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -434,7 +434,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0.11190593, y: 0, z: 1.1587454, w: -1.0294782}
+  m_margin: {x: 0.11190593, y: 0, z: 1.010877, w: -1.0294782}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   _SortingLayer: 0

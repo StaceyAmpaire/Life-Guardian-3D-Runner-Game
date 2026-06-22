@@ -291,7 +291,7 @@ MonoBehaviour:
   activityMessage: 
   dewValue: 8
   lifeValue: 7
-  activitySound: {fileID: 8300000, guid: 7f8ac7fcf79b3814ca8d093106797889, type: 3}
+  activitySound: {fileID: 8300000, guid: 02709d0fd0febe041ab49337db05eb0e, type: 3}
 --- !u!65 &180534032640546341
 BoxCollider:
   m_ObjectHideFlags: 0

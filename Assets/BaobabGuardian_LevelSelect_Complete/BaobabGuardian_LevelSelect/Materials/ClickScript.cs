@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class ClickScript : MonoBehaviour
 {
@@ -40,6 +41,20 @@ public class ClickScript : MonoBehaviour
         if (!detected)
             return;
 
+            // Ignore clicks on UI
+if (EventSystem.current != null)
+{
+    if (Mouse.current != null &&
+        EventSystem.current.IsPointerOverGameObject())
+        return;
+
+    if (Touchscreen.current != null &&
+        Touchscreen.current.primaryTouch.press.isPressed &&
+        EventSystem.current.IsPointerOverGameObject(
+            Touchscreen.current.primaryTouch.touchId.ReadValue()))
+        return;
+}
+
         Ray ray = Camera.main.ScreenPointToRay(inputPos);
 
         RaycastHit2D hit =
@@ -58,26 +73,29 @@ public class ClickScript : MonoBehaviour
 
     // MANAGEMENT PORTAL
     if (type == PortalType.Management)
-    {
-        AlertManager.Instance.ShowAlert(
-            "Entering Management Path."
-        );
+{
+    if (AchievementManager.Instance != null)
+        AchievementManager.Instance.MarkPathPlayed("Management");
 
-        SceneManager.LoadScene(managementScene);
-        return;
-    }
+    AlertManager.Instance.ShowAlert("Entering Management Path.");
+    SceneManager.LoadScene(managementScene);
+    return;
+}
 
     // PREVENTION PORTAL
     if (type == PortalType.Prevention)
     {
         if (life >= 50)
-        {
-            AlertManager.Instance.ShowAlert(
-                "Tree Life is healthy enough. Entering Prevention Path."
-            );
+{
+    if (AchievementManager.Instance != null)
+        AchievementManager.Instance.MarkPathPlayed("Prevention");
 
-            SceneManager.LoadScene(startScene);
-        }
+    AlertManager.Instance.ShowAlert(
+        "Tree Life is healthy enough. Entering Prevention Path."
+    );
+
+    SceneManager.LoadScene(startScene);
+}
         else
         {
             AlertManager.Instance.ShowAlert(

@@ -38,17 +38,20 @@ private string activityMessage;
             other.GetComponent<PlayerMovement>() != null)
         {
             // Play sound
-            if (activitySound != null)
-            {
-                AudioSource.PlayClipAtPoint(
-                    activitySound,
-                    transform.position);
-            }
-            else if (audioFX != null &&
-                     audioFX.clip != null)
-            {
-                audioFX.Play();
-            }
+          bool canPlaySfx = AudioSettingsManager.Instance == null ||
+                  AudioSettingsManager.Instance.SfxEnabled;
+
+if (canPlaySfx)
+{
+    if (activitySound != null)
+    {
+        AudioSource.PlayClipAtPoint(activitySound, transform.position);
+    }
+    else if (audioFX != null && audioFX.clip != null)
+    {
+        audioFX.Play();
+    }
+}
 
             // Apply activity values
             MasterInfo.dewCount =
@@ -58,20 +61,35 @@ private string activityMessage;
 MasterInfo.totalDewCount =
     Mathf.Max(0,
     MasterInfo.totalDewCount + dewValue);
-            MasterInfo.treeLife =
-                Mathf.Clamp(
-                    MasterInfo.treeLife + lifeValue,
-                    0,
-                    100);
+           MasterInfo.SetTreeLife(
+    MasterInfo.treeLife + lifeValue);
+
+    MasterInfo.SaveData();
 
             // Count healthy vs unhealthy activities
             if (lifeValue > 0)
 {
-    MasterInfo.healthyCount++;
+    MasterInfo.healthyActivityCount++;
+
+MasterInfo.activityFitness++;
+
+MasterInfo.activityFitness =
+Mathf.Clamp(
+MasterInfo.activityFitness,
+-5,
+5);
 }
 else
 {
-    MasterInfo.unhealthyCount++;
+    MasterInfo.unhealthyActivityCount++;
+
+MasterInfo.activityFitness--;
+
+MasterInfo.activityFitness =
+Mathf.Clamp(
+MasterInfo.activityFitness,
+-5,
+5);
 
     if (NutritionWarningUI.Instance != null)
     {

@@ -123,7 +123,7 @@ MonoBehaviour:
   type: 0
   dewValue: 10
   lifeValue: 10
-  foodSound: {fileID: 8300000, guid: 7f8ac7fcf79b3814ca8d093106797889, type: 3}
+  foodSound: {fileID: 8300000, guid: 953e8c4b2676f964ea21295660e1b811, type: 3}
   foodName: Avocado
   nutritionMessage: 
 --- !u!82 &-1272040359551576417
@@ -137,7 +137,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 8300000, guid: 7f8ac7fcf79b3814ca8d093106797889, type: 3}
+  m_Resource: {fileID: 8300000, guid: 953e8c4b2676f964ea21295660e1b811, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -377,8 +377,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278232538
-  m_fontColor: {r: 0.85490197, g: 0.64705884, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -395,8 +395,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 8
-  m_fontSizeBase: 8
+  m_fontSize: 9
+  m_fontSizeBase: 9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18

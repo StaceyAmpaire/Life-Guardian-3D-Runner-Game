@@ -332,9 +332,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CollectActivity
   activityName: Jogging
+  activityMessage: 
   dewValue: 10
   lifeValue: 8
-  activitySound: {fileID: 8300000, guid: 7f8ac7fcf79b3814ca8d093106797889, type: 3}
+  activitySound: {fileID: 8300000, guid: a3ac7ad4c6fb0034cab81e7e310c5434, type: 3}
 --- !u!65 &-8725180775939938789
 BoxCollider:
   m_ObjectHideFlags: 0

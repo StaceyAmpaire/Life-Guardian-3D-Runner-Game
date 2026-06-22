@@ -50,18 +50,17 @@ public class AvatarSelectSwipe : MonoBehaviour
 }
 
     private void SelectAvatar()
+{
+    PlayerPrefs.SetInt("SelectedAvatar", currentAvatar);
+    PlayerPrefs.Save();
+
+    if (AchievementManager.Instance != null)
     {
-        PlayerPrefs.SetInt(
-            "SelectedAvatar",
-            currentAvatar
-        );
-
-        PlayerPrefs.Save();
-
-        Debug.Log(
-            "Avatar Selected: " + currentAvatar
-        );
+        AchievementManager.Instance.MarkAvatarSelected(currentAvatar);
     }
+
+    Debug.Log("Avatar Selected: " + currentAvatar);
+}
 
     private void UpdateDisplay()
     {

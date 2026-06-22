@@ -38,7 +38,7 @@ public class SegmentGenerator : MonoBehaviour
         Instantiate(segment[segmentNum], new Vector3(0, 0, zPos), Quaternion.identity);
         
         zPos += 50;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(2.4f);
         creatingSegment = false;
     }
 }

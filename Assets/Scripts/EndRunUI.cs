@@ -32,6 +32,10 @@ public class EndRunUI : MonoBehaviour
         healthyText.text = "Healthy Choices: " + MasterInfo.healthyCount;
         unhealthyText.text = "Unhealthy Choices: " + MasterInfo.unhealthyCount;
        MasterInfo.CheckAndUnlockLevel2();
+       if (AchievementManager.Instance != null)
+    {
+        AchievementManager.Instance.MarkFirstRunComplete();
+    }
     }
 
    public void PlayAgain()
